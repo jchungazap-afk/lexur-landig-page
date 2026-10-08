@@ -13,7 +13,7 @@ export default function Navbar() {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-40 flex items-center justify-center p-4 sm:p-6 w-full pointer-events-none">
-        <div className="flex items-center justify-between sm:justify-center w-full max-w-[760px] gap-3 sm:gap-6 pointer-events-auto animate-slide-down">
+        <div className="flex items-center justify-between sm:justify-center w-full max-w-[920px] gap-2.5 sm:gap-4 pointer-events-auto animate-slide-down">
           {/* Logo Button */}
           <a
             href="#"
@@ -33,7 +33,7 @@ export default function Navbar() {
 
           {/* Desktop Nav Pill (White) */}
           <nav
-            className="hidden md:flex items-center justify-around bg-white h-11 sm:h-12 max-w-[440px] flex-1 px-2 rounded-full shadow-[0_4px_14px_rgba(0,0,0,0.16)]"
+            className="hidden md:flex items-center justify-center gap-1 sm:gap-1.5 bg-white h-11 sm:h-12 px-3 rounded-full shadow-[0_4px_14px_rgba(0,0,0,0.16)] shrink-0"
             aria-label="Navegación Principal"
           >
             {NAV_LINKS.map((link) => {
@@ -43,8 +43,8 @@ export default function Navbar() {
                   key={link.key}
                   href={link.href}
                   onClick={() => setActiveTab(link.key)}
-                  className={`relative px-3 py-1.5 text-[14px] font-medium tracking-[-0.01em] text-[#2e2e2e] transition-opacity duration-200 ${
-                    isActive ? "opacity-100 nav-link-active" : "opacity-50 hover:opacity-75"
+                  className={`relative whitespace-nowrap px-2.5 lg:px-3 py-1.5 text-[13px] font-medium tracking-[-0.01em] text-[#2e2e2e] transition-opacity duration-200 ${
+                    isActive ? "opacity-100 nav-link-active" : "opacity-60 hover:opacity-90"
                   }`}
                 >
                   {link.label[language]}

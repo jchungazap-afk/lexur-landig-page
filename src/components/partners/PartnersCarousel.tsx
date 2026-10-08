@@ -15,7 +15,7 @@ export default function PartnersCarousel() {
   return (
     <section
       id="solutions"
-      className="relative w-full py-20 sm:py-28 bg-[#05070a] border-t border-white/10 z-20 overflow-hidden"
+      className="relative w-full py-20 sm:py-28 bg-[#05070a] border-t border-white/10 z-20 overflow-hidden scroll-mt-20"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center mb-12 sm:mb-16">
         <span className="inline-block text-[11px] sm:text-[12px] font-semibold tracking-[0.2em] uppercase text-[#3B82F6] mb-3 bg-[#111827] px-3 py-1 rounded-full border border-[#1e293b]">

@@ -30,3 +30,70 @@ export interface PartnerItem {
   iconSvg?: string;
   badge?: string;
 }
+
+export interface SaaSProduct {
+  id: string;
+  name: string;
+  badge: string;
+  tagline: {
+    es: string;
+    en: string;
+  };
+  description: {
+    es: string;
+    en: string;
+  };
+  image: string;
+  metrics: Array<{
+    label: { es: string; en: string };
+    value: string;
+  }>;
+  features: Array<{
+    es: string;
+    en: string;
+  }>;
+}
+
+export interface ConsultingService {
+  id: string;
+  iconName: string;
+  title: {
+    es: string;
+    en: string;
+  };
+  description: {
+    es: string;
+    en: string;
+  };
+  tags: string[];
+}
+
+export interface MethodologyStep {
+  step: string;
+  title: {
+    es: string;
+    en: string;
+  };
+  description: {
+    es: string;
+    en: string;
+  };
+}
+
+export interface CaseStudy {
+  id: string;
+  client: string;
+  sector: {
+    es: string;
+    en: string;
+  };
+  metric: string;
+  metricLabel: {
+    es: string;
+    en: string;
+  };
+  summary: {
+    es: string;
+    en: string;
+  };
+}

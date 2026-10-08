@@ -10,7 +10,7 @@ import HeroPartnersTicker from "../partners/HeroPartnersTicker";
 
 export default function Hero() {
   return (
-    <section className="relative w-full min-h-[100dvh] flex flex-col items-center justify-between pt-24 pb-6 sm:pb-8 px-4 sm:px-8 overflow-hidden z-10">
+    <section className="relative w-full min-h-[100dvh] max-h-[1080px] flex flex-col items-center justify-between pt-24 pb-6 sm:pb-8 px-4 sm:px-8 overflow-hidden z-10">
       {/* Background Video */}
       <div className="absolute inset-0 bg-black overflow-hidden pointer-events-none -z-10">
         <video
