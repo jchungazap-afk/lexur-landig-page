@@ -28,7 +28,7 @@ export default function Hero() {
       </div>
 
       {/* Hero Center Body */}
-      <div className="flex flex-col items-center text-center max-w-[900px] w-full my-auto z-10 py-6 sm:py-8">
+      <div className="flex flex-col items-center text-center max-w-[1050px] w-full my-auto z-10 py-6 sm:py-8 px-2">
         <TrustRow />
         <Headline />
         <Subhead />

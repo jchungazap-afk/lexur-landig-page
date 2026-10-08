@@ -4,6 +4,7 @@ import React from "react";
 import { useLanguage } from "../../context/LanguageContext";
 import { TRANSLATIONS } from "../../data/translations";
 import { PARTNERS_DATA } from "../../data/partners";
+import { BRAND_ICON_MAP } from "../common/BrandIcons";
 
 export default function PartnersCarousel() {
   const { language } = useLanguage();
@@ -36,24 +37,37 @@ export default function PartnersCarousel() {
         <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 sm:w-40 z-10 bg-gradient-to-l from-[#05070a] to-transparent" />
 
         <div className="animate-marquee flex gap-4 sm:gap-6 py-4">
-          {marqueeItems.map((partner, index) => (
-            <div
-              key={`${partner.id}-${index}`}
-              className="flex flex-col justify-between w-[260px] sm:w-[300px] h-[130px] p-5 rounded-2xl bg-[#0c0f17] border border-white/10 hover:border-white/30 transition-all duration-300 shrink-0 group hover:-translate-y-1"
-            >
-              <div className="flex items-center justify-between">
-                <span className="text-base sm:text-lg font-semibold text-white tracking-tight group-hover:text-blue-400 transition-colors">
-                  {partner.name}
-                </span>
-                <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-white/10 text-gray-300 font-medium">
-                  {partner.badge}
-                </span>
+          {marqueeItems.map((partner, index) => {
+            const IconComponent = BRAND_ICON_MAP[partner.id];
+
+            return (
+              <div
+                key={`${partner.id}-${index}`}
+                className="flex flex-col justify-between w-[280px] sm:w-[320px] h-[136px] p-5 rounded-2xl bg-[#0c0f17] border border-white/10 hover:border-white/30 transition-all duration-300 shrink-0 group hover:-translate-y-1"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                      {IconComponent ? (
+                        <IconComponent className="w-4 h-4" />
+                      ) : (
+                        <span className="w-2 h-2 rounded-full bg-blue-500" />
+                      )}
+                    </div>
+                    <span className="text-sm sm:text-base font-semibold text-white tracking-tight group-hover:text-blue-400 transition-colors">
+                      {partner.name}
+                    </span>
+                  </div>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/10 text-gray-300 font-medium shrink-0">
+                    {partner.badge}
+                  </span>
+                </div>
+                <p className="text-xs text-[#8e8e8e] font-normal leading-snug">
+                  {partner.category[language]}
+                </p>
               </div>
-              <p className="text-xs text-[#8e8e8e] font-normal leading-snug">
-                {partner.category[language]}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
