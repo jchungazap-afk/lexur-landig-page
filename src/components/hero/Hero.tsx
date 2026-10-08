@@ -11,10 +11,10 @@ import HeroPartnersTicker from "../partners/HeroPartnersTicker";
 export default function Hero() {
   return (
     <section className="relative w-full min-h-[100dvh] max-h-[1080px] flex flex-col items-center justify-between pt-24 pb-6 sm:pb-8 px-4 sm:px-8 overflow-hidden z-10">
-      {/* Background Video */}
+      {/* Background Video with Contrast Protection Overlay */}
       <div className="absolute inset-0 bg-black overflow-hidden pointer-events-none -z-10">
         <video
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-90"
           autoPlay
           muted
           loop
@@ -25,6 +25,9 @@ export default function Hero() {
             type="video/mp4"
           />
         </video>
+        {/* Dark film and gradient vignetting so every letter is perfectly crisp */}
+        <div className="absolute inset-0 bg-black/35 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black pointer-events-none" />
       </div>
 
       {/* Hero Center Body */}

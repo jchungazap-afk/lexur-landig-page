@@ -109,6 +109,43 @@ body {
   animation-play-state: paused;
 }
 
+/* Concentric Orbit Keyframes */
+@keyframes orbit-cw {
+  from {
+    transform: rotate(var(--start-angle));
+  }
+  to {
+    transform: rotate(calc(var(--start-angle) + 360deg));
+  }
+}
+
+@keyframes orbit-ccw {
+  from {
+    transform: rotate(var(--start-angle));
+  }
+  to {
+    transform: rotate(calc(var(--start-angle) - 360deg));
+  }
+}
+
+@keyframes counter-cw {
+  from {
+    transform: rotate(calc(-1 * var(--start-angle)));
+  }
+  to {
+    transform: rotate(calc(-1 * var(--start-angle) - 360deg));
+  }
+}
+
+@keyframes counter-ccw {
+  from {
+    transform: rotate(calc(-1 * var(--start-angle)));
+  }
+  to {
+    transform: rotate(calc(-1 * var(--start-angle) + 360deg));
+  }
+}
+
 /* Active 3-dot indicator */
 .nav-link-active::after {
   content: "";
