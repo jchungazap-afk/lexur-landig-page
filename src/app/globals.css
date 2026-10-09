@@ -1,5 +1,5 @@
 @import "tailwindcss";
-/* LEXUR web · v4 */
+/* LEXUR web · v6.1 */
 
 /* Exact CSS variables */
 :root {
@@ -434,55 +434,111 @@ html {
   color: transparent;
 }
 
-/* ---------- Botón Flow: CTA importante con borde Lexur Flow en movimiento ----------
-   Borde cian→azul que recorre la cápsula y, al pasar el cursor, la "cuchilla"
-   cruza en diagonal (manual §8: un solo gesto de ~600 ms). */
-@property --flow-angle {
-  syntax: "<angle>";
-  inherits: false;
-  initial-value: 0deg;
-}
+/* ---------- Botón Liquid Glass (CTAs importantes) ----------
+   Cápsula de vidrio: fondo translúcido con desenfoque, borde de luz más
+   intenso arriba, brillo especular que sigue al cursor (--mx/--my, ver
+   LiquidGlassFx.tsx) y un resplandor azul Lexur que nace debajo. */
 .btn-flow {
+  --glass-tint: rgba(16, 32, 72, 0.55);
+  --glass-fg: #ffffff;
+  --glass-rim-top: rgba(255, 255, 255, 0.65);
+  --glass-rim-mid: rgba(255, 255, 255, 0.12);
+  --glass-rim-bottom: rgba(110, 155, 255, 0.55);
+  --glass-glow: rgba(47, 107, 234, 0.6);
+  --glass-glow-2: rgba(22, 198, 204, 0.28);
+  --glass-chev: rgba(255, 255, 255, 0.75);
+  --mx: 50%;
+  --my: 0%;
   position: relative;
   isolation: isolate;
-  overflow: hidden;
-  color: #fff;
-  border: 1px solid transparent;
+  color: var(--glass-fg);
+  border: 0;
   background:
-    linear-gradient(180deg, #102a5c, #0a1e45) padding-box,
-    conic-gradient(from var(--flow-angle), rgba(47, 107, 234, 0.15) 0deg, #16c6cc 60deg, #2f6bea 120deg, rgba(47, 107, 234, 0.15) 200deg, rgba(255, 255, 255, 0.25) 300deg, rgba(47, 107, 234, 0.15) 360deg) border-box;
-  box-shadow: 0 0 0 0 rgba(22, 198, 204, 0), 0 12px 32px -14px rgba(47, 107, 234, 0.8);
-  animation: flow-spin 4.5s linear infinite;
-  transition: box-shadow 0.3s ease, transform 0.2s ease;
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.03) 48%, rgba(255, 255, 255, 0) 52%),
+    var(--glass-tint);
+  -webkit-backdrop-filter: blur(14px) saturate(170%);
+  backdrop-filter: blur(14px) saturate(170%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -10px 18px -10px var(--glass-glow),
+    0 12px 30px -10px var(--glass-glow),
+    0 22px 46px -18px var(--glass-glow-2);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, color 0.2s ease;
 }
+/* Borde de luz: más brillante arriba, azul abajo */
+.btn-flow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.25px;
+  background: linear-gradient(180deg, var(--glass-rim-top), var(--glass-rim-mid) 45%, var(--glass-rim-bottom));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+/* Brillo especular que sigue al cursor */
 .btn-flow::after {
   content: "";
   position: absolute;
-  inset: -20% -10%;
+  inset: 0;
   z-index: -1;
-  background: linear-gradient(110deg, transparent 40%, rgba(22, 198, 204, 0.35) 50%, transparent 60%);
-  transform: translateX(-110%) skewX(-6deg);
+  border-radius: inherit;
+  background:
+    radial-gradient(120px 60px at var(--mx) var(--my), rgba(255, 255, 255, 0.28), transparent 70%),
+    radial-gradient(80% 120% at 50% 140%, var(--glass-glow-2), transparent 70%);
+  opacity: 0.55;
+  transition: opacity 0.35s ease;
   pointer-events: none;
 }
 .btn-flow:hover {
-  box-shadow: 0 0 0 4px rgba(47, 107, 234, 0.14), 0 16px 40px -12px rgba(22, 198, 204, 0.55);
+  transform: translateY(-1px) scale(1.015);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -12px 22px -10px var(--glass-glow),
+    0 16px 38px -10px var(--glass-glow),
+    0 28px 60px -18px var(--glass-glow-2);
 }
-.btn-flow:hover::after {
-  transform: translateX(110%) skewX(-6deg);
-  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.btn-flow:active { transform: translateY(1px); }
+.btn-flow:hover::after { opacity: 1; }
+.btn-flow:active { transform: translateY(0) scale(0.985); }
 .btn-flow .chev {
-  width: 1.05em;
-  height: 1.05em;
-  color: #16c6cc;
-  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  width: 1em;
+  height: 1em;
+  color: var(--glass-chev);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), color 0.25s ease;
 }
-.btn-flow:hover .chev { transform: translateX(3px); }
-@keyframes flow-spin {
-  to { --flow-angle: 360deg; }
+.btn-flow:hover .chev {
+  color: #7fe7ea;
+  transform: translateX(4px);
 }
+/* Tema claro: vidrio blanco, texto navy, resplandor azul suave */
+:root[data-theme="light"] .btn-flow {
+  --glass-tint: rgba(255, 255, 255, 0.55);
+  --glass-fg: #0a1e45;
+  --glass-rim-top: rgba(255, 255, 255, 1);
+  --glass-rim-mid: rgba(10, 30, 69, 0.08);
+  --glass-rim-bottom: rgba(47, 107, 234, 0.45);
+  --glass-glow: rgba(47, 107, 234, 0.35);
+  --glass-glow-2: rgba(22, 198, 204, 0.18);
+  --glass-chev: #2f6bea;
+  text-shadow: none;
+}
+:root[data-theme="light"] .btn-flow:hover .chev { color: #2f6bea; }
+/* Bloques siempre oscuros (hero): vidrio oscuro */
+:root[data-theme="light"] .theme-dark .btn-flow {
+  --glass-tint: rgba(16, 32, 72, 0.55);
+  --glass-fg: #ffffff;
+  --glass-rim-top: rgba(255, 255, 255, 0.65);
+  --glass-rim-mid: rgba(255, 255, 255, 0.12);
+  --glass-rim-bottom: rgba(110, 155, 255, 0.55);
+  --glass-glow: rgba(47, 107, 234, 0.6);
+  --glass-glow-2: rgba(22, 198, 204, 0.28);
+  --glass-chev: rgba(255, 255, 255, 0.75);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+}
+:root[data-theme="light"] .theme-dark .btn-flow:hover .chev { color: #7fe7ea; }
 @media (prefers-reduced-motion: reduce) {
-  .btn-flow { animation: none; }
-  .btn-flow:hover::after { transition: none; }
+  .btn-flow, .btn-flow:hover, .btn-flow:active { transform: none; }
 }

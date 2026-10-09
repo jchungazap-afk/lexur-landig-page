@@ -3,6 +3,7 @@ import Hero from "../components/hero/Hero";
 import SaaSShowcase from "../components/saas/SaasShowcase";
 import ContactSection from "../components/contact/ContactSection";
 import Footer from "../components/layout/Footer";
+import LiquidGlassFx from "../components/common/LiquidGlassFx";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <SaaSShowcase />
       <ContactSection />
       <Footer />
+      <LiquidGlassFx />
     </main>
   );
 }
