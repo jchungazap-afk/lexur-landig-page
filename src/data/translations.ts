@@ -3,31 +3,38 @@ import { NavLink, StatItemData } from "../types";
 export const NAV_LINKS: NavLink[] = [
   { key: "home", href: "#", label: { es: "Inicio", en: "Home" } },
   { key: "saas", href: "#saas", label: { es: "SaaS Propios", en: "SaaS Suite" } },
-  { key: "services", href: "#services", label: { es: "Consultoría", en: "Services" } },
-  { key: "solutions", href: "#solutions", label: { es: "Infraestructura", en: "Partners" } },
-  { key: "cases", href: "#case-studies", label: { es: "Casos de Éxito", en: "Case Studies" } },
   { key: "contact", href: "#contact", label: { es: "Contacto", en: "Contact" } },
 ];
 
 export const STATS_DATA: StatItemData[] = [
   {
-    icon: "<",
-    target: 120,
-    suffix: "ms",
+    icon: "#",
+    target: 4,
+    suffix: "",
     decimals: 0,
     label: {
-      es: "Tiempo de Respuesta",
-      en: "Inference Time",
+      es: "Sistemas SaaS Propios",
+      en: "Proprietary SaaS Products",
+    },
+  },
+  {
+    icon: "+",
+    target: 21,
+    suffix: "+",
+    decimals: 0,
+    label: {
+      es: "Módulos de Negocio Listos",
+      en: "Ready-made Business Modules",
     },
   },
   {
     icon: "%",
-    target: 99.99,
+    target: 99.9,
     suffix: "%",
-    decimals: 2,
+    decimals: 1,
     label: {
-      es: "Disponibilidad Cloud",
-      en: "Platform Uptime",
+      es: "Disponibilidad en Producción",
+      en: "Production Uptime",
     },
   },
   {
@@ -36,18 +43,8 @@ export const STATS_DATA: StatItemData[] = [
     suffix: "/7",
     decimals: 0,
     label: {
-      es: "Operatividad Continua",
-      en: "Autonomous Runtime",
-    },
-  },
-  {
-    icon: "#",
-    target: 2.4,
-    suffix: "M",
-    decimals: 1,
-    label: {
-      es: "Capacidad de Contexto",
-      en: "Context Windows",
+      es: "Soporte y Monitoreo",
+      en: "Support & Monitoring",
     },
   },
 ];
@@ -56,11 +53,11 @@ export const TRANSLATIONS = {
   es: {
     hero: {
       trustPill: "Más de 2000+ empresas confían en nosotros",
-      headlineLine1: "Inteligencia",
-      headlineLine2: "Construida Para Evolucionar",
+      headlineLine1: "Tecnología que",
+      headlineLine2: "trabaja contigo",
       subhead:
-        "Construimos aplicaciones que razonan, se adaptan y colaboran utilizando una plataforma modular de software e inteligencia artificial de alto rendimiento para consultoría empresarial.",
-      cta: "Comenzar Ahora",
+        "Sistemas SaaS y software a medida para empresas en Perú. Vende, controla tu stock y atiende a tus clientes desde un solo lugar.",
+      cta: "Habla con nosotros",
     },
     partners: {
       overline: "INFRAESTRUCTURA & ALIANZAS TECNOLÓGICAS",
@@ -69,7 +66,7 @@ export const TRANSLATIONS = {
         "Garantizamos disponibilidad global, seguridad bancaria y rendimiento extremo integrando los mayores estándares del mercado.",
     },
     saas: {
-      overline: "SUITE DE PRODUCTOS PROPIOS",
+      overline: "Suite de productos propios",
       title: "Sistemas SaaS empresariales listos para implementar",
       subtitle:
         "Plataformas diseñadas con arquitectura en la nube de alta disponibilidad, cero deuda técnica y soporte especializado para tu sector.",
@@ -108,11 +105,11 @@ export const TRANSLATIONS = {
   en: {
     hero: {
       trustPill: "Trusted by 2000+ Enterprises",
-      headlineLine1: "Intelligence",
-      headlineLine2: "Designed To Evolve",
+      headlineLine1: "Technology that",
+      headlineLine2: "works with you",
       subhead:
-        "Build applications that reason, adapt and collaborate using a modular AI platform designed for production.",
-      cta: "Get Started",
+        "SaaS systems and custom software for companies in Peru. Sell, control your stock and serve your customers from one place.",
+      cta: "Talk to us",
     },
     partners: {
       overline: "INFRASTRUCTURE & TECH ALLIANCES",
@@ -121,7 +118,7 @@ export const TRANSLATIONS = {
         "We guarantee global availability, bank-grade security, and extreme performance integrating industry-leading standards.",
     },
     saas: {
-      overline: "PROPRIETARY SAAS SUITE",
+      overline: "Proprietary SaaS suite",
       title: "Enterprise SaaS systems ready for immediate deployment",
       subtitle:
         "Platforms engineered with high-availability cloud architecture, zero technical debt, and dedicated industry support.",

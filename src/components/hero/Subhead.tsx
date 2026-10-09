@@ -10,7 +10,7 @@ export default function Subhead() {
 
   return (
     <p
-      className="max-w-[560px] text-[15px] sm:text-[18px] text-[#d0d0d0] opacity-80 leading-[1.55] font-normal mt-3 sm:mt-5 mb-5 sm:mb-8 text-center px-4 anim-item"
+      className="max-w-[560px] text-[15px] sm:text-[18px] text-zinc-300 opacity-80 leading-[1.55] font-normal mt-3 sm:mt-5 mb-5 sm:mb-8 text-center px-4 anim-item"
       style={{ animationDelay: "0.28s" }}
     >
       {t.subhead}

@@ -1,4 +1,5 @@
 @import "tailwindcss";
+/* LEXUR web · v4 */
 
 /* Exact CSS variables */
 :root {
@@ -11,7 +12,7 @@
   --trust-bg: #28282a;
   --trust-border: rgba(255, 255, 255, 0.4);
   --trust-text: #c4c2c3;
-  --font-sans: "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-sans: var(--font-plex), "Segoe UI", system-ui, sans-serif;
   --font-display: "BubbledotICG-FinePos", "Geist Pixel Circle", monospace;
 }
 
@@ -26,8 +27,8 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: #000000;
-  color: #ffffff;
+  background-color: var(--bg);
+  color: var(--text);
 }
 
 body {
@@ -154,10 +155,10 @@ body {
   left: 50%;
   width: 3px;
   height: 3px;
-  background: #000000;
+  background: var(--color-black);
   border-radius: 50%;
   transform: translateX(-50%);
-  box-shadow: -5px 0 0 #000000, 5px 0 0 #000000;
+  box-shadow: -5px 0 0 var(--color-black), 5px 0 0 var(--color-black);
 }
 
 /* Soft CTA glow */
@@ -202,4 +203,286 @@ body {
     transform: none !important;
     filter: none !important;
   }
+}
+
+/* ---------- Sistemas SaaS · scrollytelling ---------- */
+.saas-mock {
+  /* nítido y completo: ancho limitado por ancho y alto de pantalla */
+  width: min(92vw, calc((100svh - 300px) * var(--aspect, 1.78)));
+}
+@media (min-width: 1024px) {
+  .saas-mock {
+    width: min(60vw, calc((100svh - 230px) * var(--aspect, 1.78)), 1180px);
+  }
+}
+.saas-frame {
+  box-shadow: 0 40px 90px -30px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  backface-visibility: hidden;
+}
+.saas-grid {
+  /* Trama de cuchillas: líneas a 48°, una destacada cada cuatro */
+  background-image:
+    repeating-linear-gradient(-48deg, var(--grid-line-strong) 0 1px, transparent 1px 112px),
+    repeating-linear-gradient(-48deg, var(--grid-line) 0 1px, transparent 1px 28px);
+  mask-image: radial-gradient(ellipse 75% 65% at 50% 50%, #000 25%, transparent 78%);
+}
+.saas-static {
+  animation: saas-fade linear both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 40%;
+}
+@keyframes saas-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.scrollbar-none { scrollbar-width: none; }
+.scrollbar-none::-webkit-scrollbar { display: none; }
+
+/* Presentación de "Sistemas SaaS": revelado por palabras */
+.saas-prologue .pro-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.45em);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i, 0) * 70ms);
+}
+.saas-prologue[data-in] .pro-word {
+  opacity: 1;
+  transform: none;
+}
+
+
+/* ================================================================
+   MARCA LEXUR (Manual de identidad v2)
+   Navy #0A1E45 · Azul #2F6BEA · Cian #16C6CC · Niebla #EEF2F8 · Grafito #55607A
+   Lexur Flow: linear-gradient(110deg, #2F6BEA, #16C6CC)
+
+   TEMAS · oscuro (por defecto, sobre navy) / claro (sobre Niebla)
+   Los componentes usan white/black/zinc de Tailwind; aquí se reasignan
+   esas variables a la paleta de marca en cada tema. `.theme-dark` fuerza
+   el oscuro en un bloque (hero en video, marco de las capturas).
+   ================================================================ */
+@theme {
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, monospace;
+  --font-heading: var(--font-lexend), var(--font-plex), system-ui, sans-serif;
+  --color-navy: #0a1e45;
+  --color-brand: #2f6bea;
+  --color-cyan: #16c6cc;
+  --color-mist: #eef2f8;
+  --color-graphite: #55607a;
+}
+:root,
+.theme-dark {
+  color-scheme: dark;
+  --bg: #050d20;
+  --text: #ffffff;
+  --muted: #8a96ae;
+  --grid-line: rgba(140, 170, 230, 0.06);
+  --grid-line-strong: rgba(47, 107, 234, 0.16);
+  --scrim: rgba(5, 13, 32, 0.6);
+  --hero-shadow: rgba(0, 0, 0, 0.9);
+  --flow: linear-gradient(110deg, #2f6bea, #16c6cc);
+  --color-white: #ffffff;
+  --color-black: #050d20;
+  --color-zinc-100: #eef2f8;
+  --color-zinc-200: #d9e0ec;
+  --color-zinc-300: #b8c2d4;
+  --color-zinc-400: #8a96ae;
+  --color-zinc-500: #6b7791;
+  --color-zinc-600: #4a5570;
+  --color-zinc-700: #2c3754;
+  --color-zinc-800: #1a2645;
+  --color-zinc-900: #0f1a35;
+  --color-blue-300: #9bbcff;
+  --color-blue-400: #6e9bff;
+  --color-blue-500: #2f6bea;
+  --color-blue-600: #2f6bea;
+  --color-emerald-400: #34d399;
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #eef2f8;
+  --text: #0a1e45;
+  --muted: #55607a;
+  --grid-line: rgba(10, 30, 69, 0.06);
+  --grid-line-strong: rgba(47, 107, 234, 0.16);
+  --scrim: rgba(238, 242, 248, 0.7);
+  --hero-shadow: rgba(255, 255, 255, 0.5);
+  --color-white: #0a1e45;
+  --color-black: #eef2f8;
+  --color-zinc-100: #0a1e45;
+  --color-zinc-200: #17294f;
+  --color-zinc-300: #2d3b5e;
+  --color-zinc-400: #55607a;
+  --color-zinc-500: #66718a;
+  --color-zinc-600: #949db2;
+  --color-zinc-700: #c3cad8;
+  --color-zinc-800: #dce2ec;
+  --color-zinc-900: #e6ebf3;
+  --color-blue-300: #2559c9;
+  --color-blue-400: #2f6bea;
+  --color-emerald-400: #059669;
+}
+/* Re-aplicar el oscuro dentro de bloques forzados aunque la página esté en claro */
+:root[data-theme="light"] .theme-dark {
+  color-scheme: dark;
+  --bg: #050d20;
+  --text: #ffffff;
+  --muted: #8a96ae;
+  --grid-line: rgba(140, 170, 230, 0.06);
+  --scrim: rgba(5, 13, 32, 0.6);
+  --hero-shadow: rgba(0, 0, 0, 0.9);
+  --color-white: #ffffff;
+  --color-black: #050d20;
+  --color-zinc-100: #eef2f8;
+  --color-zinc-200: #d9e0ec;
+  --color-zinc-300: #b8c2d4;
+  --color-zinc-400: #8a96ae;
+  --color-zinc-500: #6b7791;
+  --color-zinc-600: #4a5570;
+  --color-zinc-700: #2c3754;
+  --color-zinc-800: #1a2645;
+  --color-zinc-900: #0f1a35;
+  --color-blue-300: #9bbcff;
+  --color-blue-400: #6e9bff;
+  --color-emerald-400: #34d399;
+}
+
+/* Tipografía de marca: Lexend para titulares, IBM Plex Sans para texto */
+h1, h2, h3, .font-heading {
+  font-family: var(--font-heading);
+}
+
+/* Botón principal: Azul Lexur (manual: "Botones y enlaces") */
+.btn-brand {
+  background: #2f6bea;
+  color: #fff;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-brand:hover {
+  background: #2559c9;
+  box-shadow: 0 10px 30px -10px rgba(47, 107, 234, 0.7);
+}
+.btn-brand:active { transform: translateY(1px); }
+
+/* Texto con Lexur Flow (solo momentos destacados) */
+.text-flow {
+  background: var(--flow);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Recurso gráfico: la cuchilla a 48°. Separador corto con degradado */
+.blade {
+  display: inline-block;
+  width: 0.22em;
+  height: 0.9em;
+  background: var(--flow);
+  transform: skewX(-42deg);
+  border-radius: 1px;
+}
+
+/* Micro-movimiento de iconos: solo en respuesta a la interacción */
+.icon-nudge { transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1); }
+.group:hover .icon-nudge, .group:focus-visible .icon-nudge { transform: translate(2px, -2px); }
+.group:hover .icon-nudge-x, .group:focus-visible .icon-nudge-x { transform: translateX(3px); }
+.icon-nudge-x { transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1); }
+@keyframes icon-wiggle {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(-12deg) scale(1.08); }
+  60% { transform: rotate(9deg) scale(1.04); }
+}
+.group:hover .icon-wiggle { animation: icon-wiggle 0.5s ease; }
+@keyframes icon-pop {
+  0% { transform: scale(0.4); opacity: 0; }
+  60% { transform: scale(1.12); opacity: 1; }
+  100% { transform: scale(1); }
+}
+.icon-pop { animation: icon-pop 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+@keyframes icon-rise {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+.group:hover .icon-rise { animation: icon-rise 0.6s ease; }
+@media (prefers-reduced-motion: reduce) {
+  .icon-nudge, .icon-nudge-x { transition: none; }
+  .group:hover .icon-wiggle, .group:hover .icon-rise, .icon-pop { animation: none; }
+}
+html {
+  transition: background-color 0.4s ease;
+}
+
+/* Fondos de escena por tema */
+.saas-bg { background: var(--g-dark); }
+:root[data-theme="light"] .saas-bg { background: var(--g-light); }
+/* Velo suave detrás de la ficha para legibilidad sobre partículas */
+.saas-panel::before {
+  content: "";
+  position: absolute;
+  inset: -12% -14%;
+  z-index: -1;
+  background: radial-gradient(closest-side, var(--scrim), transparent);
+  pointer-events: none;
+}
+
+/* Firma del footer: degradado que se funde con el fondo */
+.footer-wordmark {
+  background: linear-gradient(180deg, color-mix(in oklab, var(--color-white) 14%, transparent), transparent 85%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- Botón Flow: CTA importante con borde Lexur Flow en movimiento ----------
+   Borde cian→azul que recorre la cápsula y, al pasar el cursor, la "cuchilla"
+   cruza en diagonal (manual §8: un solo gesto de ~600 ms). */
+@property --flow-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+.btn-flow {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: #fff;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(180deg, #102a5c, #0a1e45) padding-box,
+    conic-gradient(from var(--flow-angle), rgba(47, 107, 234, 0.15) 0deg, #16c6cc 60deg, #2f6bea 120deg, rgba(47, 107, 234, 0.15) 200deg, rgba(255, 255, 255, 0.25) 300deg, rgba(47, 107, 234, 0.15) 360deg) border-box;
+  box-shadow: 0 0 0 0 rgba(22, 198, 204, 0), 0 12px 32px -14px rgba(47, 107, 234, 0.8);
+  animation: flow-spin 4.5s linear infinite;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+.btn-flow::after {
+  content: "";
+  position: absolute;
+  inset: -20% -10%;
+  z-index: -1;
+  background: linear-gradient(110deg, transparent 40%, rgba(22, 198, 204, 0.35) 50%, transparent 60%);
+  transform: translateX(-110%) skewX(-6deg);
+  pointer-events: none;
+}
+.btn-flow:hover {
+  box-shadow: 0 0 0 4px rgba(47, 107, 234, 0.14), 0 16px 40px -12px rgba(22, 198, 204, 0.55);
+}
+.btn-flow:hover::after {
+  transform: translateX(110%) skewX(-6deg);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-flow:active { transform: translateY(1px); }
+.btn-flow .chev {
+  width: 1.05em;
+  height: 1.05em;
+  color: #16c6cc;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-flow:hover .chev { transform: translateX(3px); }
+@keyframes flow-spin {
+  to { --flow-angle: 360deg; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-flow { animation: none; }
+  .btn-flow:hover::after { transition: none; }
 }

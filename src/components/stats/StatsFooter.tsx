@@ -74,7 +74,7 @@ export default function StatsFooter() {
             <span className="text-white text-[20px] sm:text-[26px] font-semibold tracking-tight tabular-nums leading-tight">
               {formatDisplay(counts[idx], stat.decimals, stat.suffix)}
             </span>
-            <span className="text-[#8e8e8e] text-[11px] sm:text-[12.5px] font-medium mt-1">
+            <span className="text-zinc-500 text-[11px] sm:text-[12.5px] font-medium mt-1">
               {stat.label[language]}
             </span>
           </div>

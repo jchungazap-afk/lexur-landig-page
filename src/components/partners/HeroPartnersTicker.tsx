@@ -22,7 +22,7 @@ export default function HeroPartnersTicker() {
               className="inline-flex items-center gap-2 text-xs font-mono tracking-wider text-gray-300 uppercase select-none hover:text-white transition-all py-1.5 px-3 rounded-full bg-white/[0.04] border border-white/10 hover:border-white/25 hover:bg-white/[0.08]"
             >
               {IconComponent ? (
-                <IconComponent className="w-3.5 h-3.5 shrink-0" />
+                <IconComponent className="w-4 h-4 shrink-0" />
               ) : (
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-500 inline-block" />
               )}

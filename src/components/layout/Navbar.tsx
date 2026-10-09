@@ -1,40 +1,40 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
 import { useLanguage } from "../../context/LanguageContext";
 import { NAV_LINKS } from "../../data/translations";
-import { Globe, Menu, X, ArrowUpRight } from "lucide-react";
+import { GlobeSimple as Globe, List as Menu, X, ArrowUpRight, CaretDoubleRight } from "../common/Icons";
+import ThemeToggle from "../common/ThemeToggle";
+import BrandLogo from "../common/BrandLogo";
 
 export default function Navbar() {
   const { language, setLanguage, toggleLanguage } = useLanguage();
   const [activeTab, setActiveTab] = useState<string>("home");
   const [isMobileOpen, setIsMobileOpen] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
+  // El hero es un video oscuro en ambos temas: mientras el navbar esté encima, usa la versión oscura
+  const [overHero, setOverHero] = useState<boolean>(true);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
+      const hero = document.querySelector("[data-hero]");
+      setOverHero(hero ? hero.getBoundingClientRect().bottom > 72 : false);
     };
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <>
-      {/* Top blur gradient backdrop */}
-      <div
-        className="pointer-events-none fixed top-0 left-0 w-full h-24 z-40 select-none bg-gradient-to-b from-black/80 via-black/30 to-transparent backdrop-blur-[6px]"
-        aria-hidden="true"
-      />
-
       {/* Floating Executive Navbar */}
-      <header className="fixed top-3 sm:top-4 left-0 right-0 z-50 flex items-center justify-center px-4 sm:px-6 w-full pointer-events-none">
+      <header className={`${overHero ? "theme-dark" : ""} fixed top-3 sm:top-4 left-0 right-0 z-50 flex items-center justify-center px-4 sm:px-6 w-full pointer-events-none`}>
         <div
           className={`flex items-center justify-between w-full max-w-6xl pointer-events-auto transition-all duration-300 py-2 px-3 sm:px-4 rounded-full border ${
             scrolled
-              ? "bg-[#06080e]/90 border-white/15 shadow-[0_16px_50px_rgba(0,0,0,0.85)] backdrop-blur-xl"
-              : "bg-[#080b12]/80 border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.6)] backdrop-blur-lg"
+              ? "bg-black/35 border-white/10 backdrop-blur-md"
+              : "bg-transparent border-transparent"
           }`}
         >
           {/* Brand Left: Logo + Wordmark */}
@@ -43,23 +43,7 @@ export default function Navbar() {
             className="flex items-center gap-2.5 group shrink-0"
             aria-label="LEXUR Home"
           >
-            <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-zinc-900 border border-white/15 flex items-center justify-center overflow-hidden shadow-inner group-hover:scale-105 transition-transform duration-200">
-              <Image
-                src="/assets/logo.webp"
-                alt="LEXUR"
-                fill
-                className="object-contain p-1"
-                priority
-              />
-            </div>
-            <div className="flex items-baseline gap-1.5">
-              <span className="font-sans font-bold text-base sm:text-lg tracking-tight text-white group-hover:text-blue-400 transition-colors">
-                LEXUR
-              </span>
-              <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-400 font-semibold px-1.5 py-0.2 rounded bg-white/5 border border-white/10">
-                CORP
-              </span>
-            </div>
+            <BrandLogo height={26} />
           </a>
 
           {/* Desktop Navigation Links */}
@@ -88,6 +72,8 @@ export default function Navbar() {
 
           {/* Right Action Cluster */}
           <div className="flex items-center gap-2 sm:gap-3">
+            <ThemeToggle language={language} />
+
             {/* Language Switcher */}
             <button
               onClick={toggleLanguage}
@@ -116,10 +102,10 @@ export default function Navbar() {
             {/* Quick Consultation CTA Button */}
             <a
               href="#contact"
-              className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold px-4 py-1.5 rounded-full bg-white text-black hover:bg-zinc-200 transition-all duration-200 shadow-md group shrink-0"
+              className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold px-4 py-1.5 rounded-full btn-flow group shrink-0"
             >
               <span>{language === "es" ? "Cotizar Software" : "Get Proposal"}</span>
-              <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              <CaretDoubleRight className="chev" />
             </a>
 
             {/* Mobile Hamburger Button */}
@@ -142,7 +128,7 @@ export default function Navbar() {
           onClick={() => setIsMobileOpen(false)}
         >
           <div
-            className="fixed top-20 left-4 right-4 max-w-sm mx-auto bg-[#0a0d14] border border-white/15 rounded-3xl p-6 shadow-2xl z-50 text-white flex flex-col gap-4"
+            className="fixed top-20 left-4 right-4 max-w-sm mx-auto bg-zinc-900 border border-white/15 rounded-3xl p-6 shadow-2xl z-50 text-white flex flex-col gap-4"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between pb-3 border-b border-white/10">
@@ -211,7 +197,7 @@ export default function Navbar() {
             <a
               href="#contact"
               onClick={() => setIsMobileOpen(false)}
-              className="mt-2 w-full py-3 rounded-full bg-white text-black text-center text-sm font-semibold hover:bg-zinc-200 transition-colors shadow-lg flex items-center justify-center gap-2"
+              className="mt-2 w-full py-3 rounded-full btn-brand text-center text-sm font-semibold flex items-center justify-center gap-2"
             >
               <span>{language === "es" ? "Cotizar Proyecto" : "Get Proposal"}</span>
               <ArrowUpRight className="w-4 h-4" />

@@ -10,7 +10,7 @@ import HeroPartnersTicker from "../partners/HeroPartnersTicker";
 
 export default function Hero() {
   return (
-    <section className="relative w-full min-h-[100dvh] max-h-[1080px] flex flex-col items-center justify-between pt-24 pb-6 sm:pb-8 px-4 sm:px-8 overflow-hidden z-10">
+    <section data-hero className="theme-dark text-white bg-black relative w-full min-h-[100dvh] flex flex-col items-center justify-between pt-20 pb-5 px-4 sm:px-8 overflow-hidden z-10">
       {/* Background Video with Contrast Protection Overlay */}
       <div className="absolute inset-0 bg-black overflow-hidden pointer-events-none -z-10">
         <video
@@ -31,7 +31,7 @@ export default function Hero() {
       </div>
 
       {/* Hero Center Body */}
-      <div className="flex flex-col items-center text-center max-w-[1050px] w-full my-auto z-10 py-6 sm:py-8 px-2">
+      <div className="flex flex-col items-center text-center max-w-[1050px] w-full my-auto z-10 py-2 sm:py-3 px-2">
         <TrustRow />
         <Headline />
         <Subhead />
@@ -39,7 +39,7 @@ export default function Hero() {
       </div>
 
       {/* Bottom Area: Stats + Partners Marquee Ticker */}
-      <div className="w-full flex flex-col items-center gap-4 sm:gap-6 z-10">
+      <div className="w-full flex flex-col items-center gap-2.5 sm:gap-4 z-10 pb-1">
         <StatsFooter />
         <HeroPartnersTicker />
       </div>

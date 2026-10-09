@@ -1,97 +1,38 @@
-# luxer-landing-page
+# LEXUR · Landing
 
-> **LEXUR CORP** — Enterprise Software Solutions, High-Precision Cloud Architecture & SaaS Suites.
+Sitio de **Lexur Corporation** — *Tecnología que trabaja contigo*.
+Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS 4.
 
-Landing page oficial de **LEXUR CORP**, desarrollada con arquitectura modular en **React + Next.js App Router (TypeScript + Tailwind CSS)**.
+## Desarrollo
 
----
-
-## ⚡ Características Principales
-
-- 🎥 **Full-Bleed Video Background**: Video de alta definición en loop continuo optimizado para alto rendimiento.
-- 🌐 **Soporte Bilingüe Nativo (ES / EN)**: Selector instantáneo de idioma sin recarga de página, con persistencia local (`localStorage`) y textos oficiales para consultoría empresarial de software.
-- 🎯 **Landing Pura (Sin Login)**: Enfoque 100% de conversión y presentación corporativa con Navbar limpio.
-- 📊 **Telemetría & Métricas Interactivas**: Contadores dinámicos animados con interpolación cúbica (`easeOutCubic`) para tiempos de inferencia, disponibilidad cloud y contexto.
-- 🤝 **Carrusel de Proveedores (Partners Marquee)**:
-  - Ticker monocromático continuo integrado en la base del Hero.
-  - Sección ampliada con marquesina infinita para AWS, Google Cloud, Azure, Stripe, PostgreSQL, Vercel, Docker, Cloudflare, Supabase y Redis.
-- 🎨 **Estilo "Precision Dark"**: Cero degradados agresivos o desenfoques pesados; superficies sólidas, bordes hairline de 1px y tipografía retro dot-matrix (*BubbledotICG-FinePos* / *Geist Pixel Circle*).
-
----
-
-## 🏗️ Arquitectura del Proyecto
-
-```text
-lexurpe-web/
-├── public/
-│   ├── assets/
-│   │   └── logo.webp                  # Isotipo circular oficial de LEXUR
-│   └── fonts/
-│       └── GeistPixel-Circle.woff2    # Tipografía Geist Pixel Circle (fallback display)
-├── src/
-│   ├── app/
-│   │   ├── layout.tsx                 # Fuentes (Inter, Bubbledot, FontAwesome) + LanguageProvider
-│   │   ├── globals.css                # Tokens de diseño, animaciones y estilos de precisión
-│   │   ├── page.tsx                   # Ensamblador principal de la Landing Page
-│   │   └── partners/page.tsx          # Vista dedicada para el catálogo de partners
-│   ├── components/
-│   │   ├── layout/
-│   │   │   ├── Navbar.tsx             # Header flotante, logo L, selector ES/EN y menú móvil
-│   │   │   └── Footer.tsx             # Estado operativo 99.99% Uptime y copyright corporativo
-│   │   ├── hero/
-│   │   │   ├── Hero.tsx               # Video background + composición principal del Hero
-│   │   │   ├── TrustRow.tsx           # Anillos de avatares (MS, Amazon, Google) + Trust pill
-│   │   │   ├── Headline.tsx           # Titular retro dot-matrix con animaciones escalonadas
-│   │   │   ├── Subhead.tsx            # Subtítulo editorial para consultoría de software
-│   │   │   └── CtaButton.tsx          # Botón de acción con resplandor suave
-│   │   ├── stats/
-│   │   │   └── StatsFooter.tsx        # Métricas de telemetría y contadores numéricos
-│   │   └── partners/
-│   │       ├── HeroPartnersTicker.tsx # Ticker fluido de proveedores al pie del Hero
-│   │       └── PartnersCarousel.tsx   # Sección completa con marquesina infinita
-│   ├── context/
-│   │   └── LanguageContext.tsx        # Contexto reactivo de idioma (ES / EN)
-│   ├── data/
-│   │   ├── translations.ts            # Diccionario tipado en español e inglés
-│   │   └── partners.ts                # Proveedores cloud y socios de infraestructura
-│   └── types/
-│       └── index.ts                   # Tipado estricto en TypeScript
-├── package.json
-└── tsconfig.json
-```
-
----
-
-## 🚀 Inicio Rápido
-
-### 1. Instalación de dependencias
 ```bash
 npm install
+npm run dev        # http://localhost:3000
+npm run build      # build de producción
 ```
 
-### 2. Modo desarrollo
-```bash
-npm run dev
-```
-Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
+Requiere Node.js 20.9 o superior.
 
-### 3. Compilación para Producción (Vercel / Netlify)
-```bash
-npm run build
-npm start
-```
+## Despliegue en Vercel
 
----
+1. En Vercel: **Add New → Project** e importa `Lexur-Software-Solutions/lxss-optix-landing`.
+2. Framework: **Next.js** (se detecta solo). No hace falta cambiar comandos.
+3. Variable de entorno opcional: `NEXT_PUBLIC_SITE_URL` = dominio final (p. ej. `https://lexur.pe`), usada para las URLs absolutas de metadatos y redes.
+4. Cada push a `main` despliega producción; cada rama/PR, una vista previa.
 
-## 📦 Despliegue en Vercel o Netlify
+## Dónde se edita cada cosa
 
-El proyecto está configurado para desplegarse automáticamente sin configuración adicional:
-- **Framework Preset**: Next.js
-- **Build Command**: `npm run build`
-- **Output Directory**: `.next`
+| Qué | Archivo |
+| --- | --- |
+| Contacto (WhatsApp, correo, ciudad, horario) | `src/data/company.ts` |
+| Sistemas SaaS: textos, módulos, stack, métricas, color, lado | `src/data/saasScenes.ts` |
+| Ritmo del scroll de la sección SaaS | `src/components/saas/timeline.ts` |
+| Textos del hero y métricas | `src/data/translations.ts` |
+| Paleta, temas claro/oscuro, botones de marca | `src/app/globals.css` (bloque «MARCA LEXUR») |
+| Archivos del logo | `public/brand/` (rutas en `src/data/brand.ts`) |
+| Iconos (Phosphor, incrustados) | `src/components/common/Icons.tsx` |
 
----
+## Marca
 
-## 📄 Licencia
-
-© 2026 LEXUR Software Solutions Corp. Todos los derechos reservados.
+Manual de identidad LEXUR v2: Navy `#0A1E45`, Azul `#2F6BEA`, Cian `#16C6CC`, Niebla `#EEF2F8`, Grafito `#55607A`;
+tipografías Lexend (titulares), IBM Plex Sans (texto) y JetBrains Mono (datos).

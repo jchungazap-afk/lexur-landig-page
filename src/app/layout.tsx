@@ -1,14 +1,41 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { Lexend, IBM_Plex_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "../context/LanguageContext";
 
+// Tipografías del manual de marca LEXUR v2
+const lexend = Lexend({ subsets: ["latin"], weight: ["500", "600"], variable: "--font-lexend", display: "swap" });
+const plex = IBM_Plex_Sans({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-plex", display: "swap" });
+const jetbrains = JetBrains_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-jetbrains", display: "swap" });
+
+// Se ejecuta antes de pintar: evita el parpadeo al cargar el tema guardado
+const THEME_SCRIPT = `(function(){try{var t=localStorage.getItem("lexur_theme");if(t!=="light"&&t!=="dark"){t="dark"}document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme="dark"}})();`;
+
 export const metadata: Metadata = {
-  title: "LEXUR — Consultoría de Software & Soluciones Cloud",
-  description:
-    "Consultoría de software e ingeniería cloud de alta precisión. Suites SaaS empresariales y arquitecturas digitales de misión crítica.",
-  icons: {
-    icon: "/assets/logo.webp",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://lexur.pe"),
+  title: {
+    default: "LEXUR · Tecnología que trabaja contigo",
+    template: "%s · LEXUR",
   },
+  description:
+    "Sistemas SaaS y software a medida para empresas en Perú: punto de venta e inventario, historia clínica, ópticas e infraestructura cloud.",
+  applicationName: "LEXUR",
+  icons: { icon: "/assets/logo.webp" },
+  openGraph: {
+    type: "website",
+    locale: "es_PE",
+    siteName: "LEXUR",
+    title: "LEXUR · Tecnología que trabaja contigo",
+    description:
+      "Sistemas SaaS y software a medida para empresas en Perú.",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#050d20" },
+    { media: "(prefers-color-scheme: light)", color: "#eef2f8" },
+  ],
 };
 
 export default function RootLayout({
@@ -17,15 +44,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className="h-full bg-black text-white antialiased">
+    <html lang="es" data-theme="dark" suppressHydrationWarning className={`h-full antialiased ${lexend.variable} ${plex.variable} ${jetbrains.variable}`}>
       <head>
-        {/* 1. Google Fonts: Inter */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
-          rel="stylesheet"
-        />
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
 
         {/* 2. BubbledotICG-FinePos via OnlineWebFonts CDN */}
         <link
