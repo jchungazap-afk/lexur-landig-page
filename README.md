@@ -66,4 +66,11 @@ La separación de responsabilidades permite editar el contenido sin tocar la UI:
 
 ## Pruebas (QA) y Automatización
 
-Para detalles exhaustivos sobre cómo automatizar pruebas sobre los componentes (Navegación, Hero, Efectos de Canvas, Interacciones), consulta la documentación de QA en los documentos técnicos adjuntos o en la bitácora del proyecto.
+Pruebas end-to-end con Playwright (carpeta `test/`):
+
+```bash
+npx playwright install   # solo la primera vez
+npm run test:e2e
+```
+
+El plan de calidad y rendimiento está en [`docs/QA_Performance_Plan.md`](docs/QA_Performance_Plan.md).
