@@ -8,8 +8,9 @@ export const BRAND_LOGO = {
   horizontal: "/brand/lexur-horizontal.svg",
   /** Horizontal en negativo: sobre navy y fondos oscuros */
   horizontalNegative: "/brand/lexur-horizontal-negativo.svg",
-  /** Símbolo pequeño (hasta 48 px) */
-  symbolSmall: "/brand/lexur-simbolo-pequeno.svg",
+  /** Símbolo */
+  symbol: "/brand/lexur-simbolo.svg",
+  symbolNegative: "/brand/lexur-simbolo-negativo.svg",
   /** Respaldo mientras no estén los archivos */
   fallback: "/assets/logo.webp",
 };

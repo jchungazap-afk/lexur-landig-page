@@ -43,7 +43,7 @@ export default function Navbar() {
             className="flex items-center gap-2.5 group shrink-0"
             aria-label="LEXUR Home"
           >
-            <BrandLogo height={26} />
+            <BrandLogo height={30} />
           </a>
 
           {/* Desktop Navigation Links */}

@@ -9,8 +9,8 @@ export default function HeroPartnersTicker() {
 
   return (
     <div className="w-full max-w-5xl overflow-hidden py-1 relative mask-gradient-x opacity-85 hover:opacity-100 transition-opacity">
-      <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-r from-black to-transparent" />
-      <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-l from-black to-transparent" />
+      <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-r from-[var(--bg)] to-transparent" />
+      <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-l from-[var(--bg)] to-transparent" />
 
       <div className="animate-marquee flex items-center gap-4 sm:gap-6 whitespace-nowrap">
         {items.map((partner, idx) => {

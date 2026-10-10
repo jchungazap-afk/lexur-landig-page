@@ -11,23 +11,14 @@ import HeroPartnersTicker from "../partners/HeroPartnersTicker";
 export default function Hero() {
   return (
     <section data-hero className="theme-dark text-white bg-black relative w-full min-h-[100dvh] flex flex-col items-center justify-between pt-20 pb-5 px-4 sm:px-8 overflow-hidden z-10">
-      {/* Background Video with Contrast Protection Overlay */}
-      <div className="absolute inset-0 bg-black overflow-hidden pointer-events-none -z-10">
-        <video
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-90"
-          autoPlay
-          muted
-          loop
-          playsInline
-        >
-          <source
-            src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260809_012548_ef22562c-c0ae-4816-ad9d-f8922af4e6a7.mp4"
-            type="video/mp4"
-          />
-        </video>
-        {/* Dark film and gradient vignetting so every letter is perfectly crisp */}
-        <div className="absolute inset-0 bg-black/35 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black pointer-events-none" />
+      {/* Fondo de marca: navy, trama de cuchillas a 48° y un horizonte (eclipse) con Lexur Flow */}
+      <div aria-hidden className="hero-bg absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+        <div className="hero-beam" />
+        <div className="hero-hatch" />
+        <div className="hero-horizon">
+          <div className="hero-planet" />
+        </div>
+        <div className="hero-grain" />
       </div>
 
       {/* Hero Center Body */}

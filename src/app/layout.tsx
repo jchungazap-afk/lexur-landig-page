@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   description:
     "Sistemas SaaS y software a medida para empresas en Perú: punto de venta e inventario, historia clínica, ópticas e infraestructura cloud.",
   applicationName: "LEXUR",
-  icons: { icon: "/assets/logo.webp" },
+  icons: { icon: "/brand/lexur-simbolo.svg" },
   openGraph: {
     type: "website",
     locale: "es_PE",

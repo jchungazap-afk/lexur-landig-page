@@ -57,7 +57,8 @@ const LENGTHS = SAAS_SCENES.map((s) => s.scrollLength ?? DEFAULT_SCROLL_LENGTH);
 const PRO = PRO_TL.length;
 // Progreso global en "pantallas": [presentación][escena 1][escena 2]...
 const TOTAL = PRO + LENGTHS.reduce((a, b) => a + b, 0);
-const ACCENTS = SAAS_SCENES.map((s) => s.accent);
+// Partículas en los colores de marca (azul y cian Lexur), iguales en todas las escenas
+const ACCENTS = ["#2f6bea", "#16c6cc", "#6e9bff", "#16c6cc"];
 const STARTS = LENGTHS.map((_, i) => PRO + LENGTHS.slice(0, i).reduce((a, b) => a + b, 0));
 
 export default function SaasShowcase() {
@@ -75,7 +76,7 @@ export default function SaasShowcase() {
   }, [zoom]);
 
   return (
-    <section id="saas" aria-labelledby="saas-heading" className="relative z-20 bg-black border-t border-white/10 scroll-mt-20">
+    <section id="saas" aria-labelledby="saas-heading" className="relative z-20 bg-black scroll-mt-20">
       <a
         href="#saas-end"
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:text-black"
@@ -445,7 +446,7 @@ function PinnedStory({
             aria-hidden
             className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[60vh] rounded-full blur-[110px] opacity-60"
             style={{
-              background: `conic-gradient(from 90deg, ${SAAS_SCENES.map((s) => s.accent + "40").join(", ")}, ${SAAS_SCENES[0].accent}40)`,
+              background: "radial-gradient(closest-side, rgba(47,107,234,0.35), rgba(22,198,204,0.12) 60%, transparent)",
             }}
           />
           <div className="relative max-w-5xl">

@@ -45,7 +45,8 @@ export default function Footer() {
   const t = T[language];
 
   return (
-    <footer className="relative bg-black border-t border-white/10 overflow-hidden">
+    <footer className="relative bg-black overflow-hidden">
+      <div aria-hidden className="section-light opacity-60" />
       <div className="max-w-[1240px] mx-auto px-5 sm:px-8 pt-16 sm:pt-20">
         <div className="grid grid-cols-2 gap-x-6 gap-y-12 lg:grid-cols-12">
           {/* Marca */}

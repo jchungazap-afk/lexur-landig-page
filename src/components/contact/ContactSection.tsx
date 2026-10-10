@@ -136,8 +136,8 @@ export default function ContactSection() {
   ];
 
   return (
-    <section id="contact" aria-labelledby="contact-title" className="relative bg-black border-t border-white/10 scroll-mt-20 overflow-hidden">
-      <div aria-hidden className="pointer-events-none absolute -top-40 right-[-10%] w-[60vw] h-[60vw] max-w-[900px] max-h-[900px] rounded-full blur-[140px] opacity-[0.14]" style={{ background: "var(--flow)" }} />
+    <section id="contact" aria-labelledby="contact-title" className="relative bg-black scroll-mt-20 overflow-hidden">
+      <div aria-hidden className="section-light" />
 
       <div className="relative max-w-[1240px] mx-auto px-5 sm:px-8 py-24 sm:py-32 grid gap-14 lg:gap-20 lg:grid-cols-12">
         {/* Columna izquierda: mensaje + canales */}
