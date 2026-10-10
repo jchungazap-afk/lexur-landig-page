@@ -1,38 +1,69 @@
-# LEXUR · Landing
+# LEXUR · Landing Web (Next.js 16)
 
-Sitio de **Lexur Corporation** — *Tecnología que trabaja contigo*.
-Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS 4.
+Sitio oficial y landing page de **Lexur Corporation** — *Tecnología que trabaja contigo*.
+Este proyecto ha sido migrado a una arquitectura moderna para ofrecer el máximo rendimiento, escalabilidad y capacidades de SEO.
 
-## Desarrollo
+**Stack Tecnológico:**
+- Next.js 16.4.0 (App Router, Server-Side Rendering)
+- React 19.3.0
+- TypeScript
+- Tailwind CSS v4
+- Lucide React (Iconografía)
+
+## Desarrollo Local
+
+Para ejecutar este proyecto en tu máquina de desarrollo:
 
 ```bash
+# Instalación de dependencias
 npm install
-npm run dev        # http://localhost:3000
-npm run build      # build de producción
+
+# Iniciar servidor de desarrollo
+npm run dev
+# El servidor estará disponible en http://localhost:3000
+
+# Compilar para producción
+npm run build
+npm run start
 ```
+*Requiere Node.js 20.9 o superior.*
 
-Requiere Node.js 20.9 o superior.
+## Arquitectura y Componentes Clave
 
-## Despliegue en Vercel
+El proyecto se estructura en la carpeta `src/`:
 
-1. En Vercel: **Add New → Project** e importa `Lexur-Software-Solutions/lxss-optix-landing`.
-2. Framework: **Next.js** (se detecta solo). No hace falta cambiar comandos.
-3. Variable de entorno opcional: `NEXT_PUBLIC_SITE_URL` = dominio final (p. ej. `https://lexur.pe`), usada para las URLs absolutas de metadatos y redes.
-4. Cada push a `main` despliega producción; cada rama/PR, una vista previa.
+- **`src/app/page.tsx`**: Entrada principal (Home) que ensambla todas las secciones.
+- **`src/components/`**: Módulos y componentes visuales.
+  - `layout/`: `Navbar.tsx`, `Footer.tsx`
+  - `hero/`: `Hero.tsx`, `CinematicScrollHero.tsx`
+  - `saas/`: `SaasShowcase.tsx`, `ParticleField.tsx`, `MockupFrame.tsx`
+  - `common/`: `Icons.tsx`, `LiquidGlassFx.tsx`, `ThemeToggle.tsx`
+- **`src/data/`**: Base de datos estática y configuración que alimenta la interfaz.
+  - `company.ts`: Datos de contacto y negocio.
+  - `saasScenes.ts`: Configuración y textos de los módulos SaaS.
+  - `translations.ts`: Diccionarios de internacionalización (i18n).
+  - `brand.ts` / `partners.ts`: Marcas y logos.
 
-## Dónde se edita cada cosa
+## Configuración y Contenido (Dónde editar)
 
-| Qué | Archivo |
+La separación de responsabilidades permite editar el contenido sin tocar la UI:
+
+| Qué editar | Archivo |
 | --- | --- |
-| Contacto (WhatsApp, correo, ciudad, horario) | `src/data/company.ts` |
-| Sistemas SaaS: textos, módulos, stack, métricas, color, lado | `src/data/saasScenes.ts` |
-| Ritmo del scroll de la sección SaaS | `src/components/saas/timeline.ts` |
-| Textos del hero y métricas | `src/data/translations.ts` |
-| Paleta, temas claro/oscuro, botones de marca | `src/app/globals.css` (bloque «MARCA LEXUR») |
-| Archivos del logo | `public/brand/` (rutas en `src/data/brand.ts`) |
-| Iconos (Phosphor, incrustados) | `src/components/common/Icons.tsx` |
+| Contacto (WhatsApp, correo, dirección) | `src/data/company.ts` |
+| Textos principales y métricas (i18n) | `src/data/translations.ts` |
+| Textos, módulos y colores de la sección SaaS | `src/data/saasScenes.ts` |
+| Clientes y partners (Carrusel) | `src/data/partners.ts` |
+| Rutas de logos y marca | `src/data/brand.ts` |
 
-## Marca
+## Despliegue (Vercel)
 
-Manual de identidad LEXUR v2: Navy `#0A1E45`, Azul `#2F6BEA`, Cian `#16C6CC`, Niebla `#EEF2F8`, Grafito `#55607A`;
-tipografías Lexend (titulares), IBM Plex Sans (texto) y JetBrains Mono (datos).
+1. Importar el repositorio desde Vercel (**Add New → Project**).
+2. Framework Preset: **Next.js** (se detecta de forma automática).
+3. **Variables de Entorno (Opcional):**
+   - `NEXT_PUBLIC_SITE_URL`: Dominio principal (p. ej. `https://lexur.pe`), usado para URLs canónicas y metadatos SEO.
+4. Vercel gestionará los despliegues de producción para la rama `main` y vistas previas automáticas para PRs.
+
+## Pruebas (QA) y Automatización
+
+Para detalles exhaustivos sobre cómo automatizar pruebas sobre los componentes (Navegación, Hero, Efectos de Canvas, Interacciones), consulta la documentación de QA en los documentos técnicos adjuntos o en la bitácora del proyecto.
