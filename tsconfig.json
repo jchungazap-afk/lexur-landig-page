@@ -30,12 +30,5 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules"],
-  "overrides":
-    {
-      "braces": "^3.0.3"
-    }
-  
+  "exclude": ["node_modules"]
 }
-
-
