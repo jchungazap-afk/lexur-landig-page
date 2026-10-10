@@ -26,6 +26,7 @@ export default function ThemeToggle({ language }: { language: "es" | "en" }) {
 
   const toggle = () => {
     document.documentElement.dataset.theme = next;
+    document.documentElement.setAttribute("data-theme", next);
     try {
       localStorage.setItem("lexur_theme", next);
     } catch {

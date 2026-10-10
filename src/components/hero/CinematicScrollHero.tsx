@@ -110,7 +110,7 @@ export default function CinematicScrollHero() {
           <div className="inline-flex items-center gap-2 bg-zinc-900/90 border border-white/15 px-3.5 py-1 rounded-full text-xs font-mono text-zinc-300 shadow-xl">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             <span className="font-semibold text-white">
-              {language === "es" ? "Arquitectura Enterprise & SaaS" : "Enterprise Architecture & SaaS"}
+              {language === "es" ? "Arquitectura Empresarial" : "Enterprise Architecture"}
             </span>
             <span className="text-zinc-500">•</span>
             <span className="text-blue-400 font-mono">99.99% SLA</span>
@@ -134,8 +134,8 @@ export default function CinematicScrollHero() {
           {/* Subtitle */}
           <p className="max-w-xl text-xs sm:text-sm md:text-base leading-relaxed text-zinc-400 font-normal">
             {language === "es"
-              ? "Consultoría de software e ingeniería cloud de alta precisión. Construimos plataformas empresariales, microservicios y soluciones SaaS de alto impacto."
-              : "High-precision software engineering and cloud architecture. We engineer scalable multi-tenant platforms, microservices and production-ready SaaS."}
+              ? "Consultoría de software e ingeniería cloud de alta precisión. Construimos plataformas empresariales, microservicios y sistemas empresariales de alto impacto."
+              : "High-precision software engineering and cloud architecture. We engineer scalable multi-tenant platforms, microservices and production-ready business systems."}
           </p>
 
           {/* Primary CTA Buttons */}
@@ -152,7 +152,7 @@ export default function CinematicScrollHero() {
               href="#saas"
               className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white/5 hover:bg-white/10 text-white font-medium text-sm border border-white/15 transition-all duration-200"
             >
-              <span>{language === "es" ? "Explorar SaaS Propios" : "Explore SaaS Suite"}</span>
+              <span>{language === "es" ? "Explorar Sistemas Empresariales" : "Explore Business Systems"}</span>
               <ChevronRight className="w-4 h-4 text-zinc-400" />
             </a>
           </div>

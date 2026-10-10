@@ -8,8 +8,8 @@ const lexend = Lexend({ subsets: ["latin"], weight: ["500", "600"], variable: "-
 const plex = IBM_Plex_Sans({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-plex", display: "swap" });
 const jetbrains = JetBrains_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-jetbrains", display: "swap" });
 
-// Se ejecuta antes de pintar: evita el parpadeo al cargar el tema guardado
-const THEME_SCRIPT = `(function(){try{var t=localStorage.getItem("lexur_theme");if(t!=="light"&&t!=="dark"){t="dark"}document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme="dark"}})();`;
+// Se ejecuta antes de pintar: evita el parpadeo al cargar el tema guardado o vía URL (?theme=light/dark)
+const THEME_SCRIPT = `(function(){try{var t=new URLSearchParams(window.location.search).get("theme")||localStorage.getItem("lexur_theme")||"dark";if(t!=="light"&&t!=="dark"){t="dark"}document.documentElement.dataset.theme=t;document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://lexur.pe"),
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     template: "%s · LEXUR",
   },
   description:
-    "Sistemas SaaS y software a medida para empresas en Perú: punto de venta e inventario, historia clínica, ópticas e infraestructura cloud.",
+    "Sistemas empresariales y software a medida para empresas en Perú: punto de venta e inventario, historia clínica, ópticas e infraestructura cloud.",
   applicationName: "LEXUR",
   icons: { icon: "/brand/lexur-simbolo.svg" },
   openGraph: {
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     siteName: "LEXUR",
     title: "LEXUR · Tecnología que trabaja contigo",
     description:
-      "Sistemas SaaS y software a medida para empresas en Perú.",
+      "Sistemas empresariales y software a medida para empresas en Perú.",
   },
 };
 
@@ -44,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" data-theme="dark" suppressHydrationWarning className={`h-full antialiased ${lexend.variable} ${plex.variable} ${jetbrains.variable}`}>
+    <html lang="es" suppressHydrationWarning className={`h-full antialiased ${lexend.variable} ${plex.variable} ${jetbrains.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
 

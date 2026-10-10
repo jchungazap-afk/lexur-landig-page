@@ -2,7 +2,7 @@ import { NavLink, StatItemData } from "../types";
 
 export const NAV_LINKS: NavLink[] = [
   { key: "home", href: "#", label: { es: "Inicio", en: "Home" } },
-  { key: "saas", href: "#saas", label: { es: "SaaS Propios", en: "SaaS Suite" } },
+  { key: "saas", href: "#saas", label: { es: "Sistemas Empresariales", en: "Business Systems" } },
   { key: "contact", href: "#contact", label: { es: "Contacto", en: "Contact" } },
 ];
 
@@ -13,8 +13,8 @@ export const STATS_DATA: StatItemData[] = [
     suffix: "",
     decimals: 0,
     label: {
-      es: "Sistemas SaaS Propios",
-      en: "Proprietary SaaS Products",
+      es: "Sistemas Empresariales Propios",
+      en: "Proprietary Business Systems",
     },
   },
   {
@@ -56,7 +56,7 @@ export const TRANSLATIONS = {
       headlineLine1: "Tecnología que",
       headlineLine2: "trabaja contigo",
       subhead:
-        "Sistemas SaaS y software a medida para empresas en Perú. Vende, controla tu stock y atiende a tus clientes desde un solo lugar.",
+        "Sistemas empresariales y software a medida para empresas en Perú. Vende, controla tu stock y atiende a tus clientes desde un solo lugar.",
       cta: "Habla con nosotros",
     },
     partners: {
@@ -67,7 +67,7 @@ export const TRANSLATIONS = {
     },
     saas: {
       overline: "Suite de productos propios",
-      title: "Sistemas SaaS empresariales listos para implementar",
+      title: "Sistemas empresariales listos para implementar",
       subtitle:
         "Plataformas diseñadas con arquitectura en la nube de alta disponibilidad, cero deuda técnica y soporte especializado para tu sector.",
       demoCta: "Solicitar Demostración en Vivo",
@@ -91,7 +91,7 @@ export const TRANSLATIONS = {
       overline: "CASOS DE ÉXITO & IMPACTO",
       title: "Resultados medibles en entornos de producción reales",
       subtitle:
-        "Casos verificados donde nuestras arquitecturas y sistemas SaaS transformaron radicalmente la velocidad y rentabilidad de nuestros clientes.",
+        "Casos verificados donde nuestras arquitecturas y sistemas empresariales transformaron radicalmente la velocidad y rentabilidad de nuestros clientes.",
     },
     ctaBanner: {
       overline: "¿LISTO PARA TRANSFORMAR TU SOFTWARE?",
@@ -99,7 +99,7 @@ export const TRANSLATIONS = {
       subtitle:
         "Nuestros arquitectos de software evaluarán tus requerimientos para ofrecerte la solución técnica más eficiente, segura y escalable.",
       primaryBtn: "Agendar Asesoría Técnica",
-      secondaryBtn: "Ver Demostraciones SaaS",
+      secondaryBtn: "Ver Demostraciones",
     },
   },
   en: {
@@ -108,7 +108,7 @@ export const TRANSLATIONS = {
       headlineLine1: "Technology that",
       headlineLine2: "works with you",
       subhead:
-        "SaaS systems and custom software for companies in Peru. Sell, control your stock and serve your customers from one place.",
+        "Business systems and custom software for companies in Peru. Sell, control your stock and serve your customers from one place.",
       cta: "Talk to us",
     },
     partners: {
@@ -118,8 +118,8 @@ export const TRANSLATIONS = {
         "We guarantee global availability, bank-grade security, and extreme performance integrating industry-leading standards.",
     },
     saas: {
-      overline: "Proprietary SaaS suite",
-      title: "Enterprise SaaS systems ready for immediate deployment",
+      overline: "Proprietary business suite",
+      title: "Business systems ready for immediate deployment",
       subtitle:
         "Platforms engineered with high-availability cloud architecture, zero technical debt, and dedicated industry support.",
       demoCta: "Request Live Interactive Demo",
@@ -143,7 +143,7 @@ export const TRANSLATIONS = {
       overline: "CASE STUDIES & IMPACT",
       title: "Measurable impact in real production environments",
       subtitle:
-        "Verified case studies where our custom architectures and SaaS suites radically accelerated velocity and profitability.",
+        "Verified case studies where our custom architectures and business systems radically accelerated velocity and profitability.",
     },
     ctaBanner: {
       overline: "READY TO ELEVATE YOUR SOFTWARE?",
@@ -151,7 +151,7 @@ export const TRANSLATIONS = {
       subtitle:
         "Our principal software architects will review your technical needs to deliver the most efficient, secure, and scalable solution.",
       primaryBtn: "Book Technical Consultation",
-      secondaryBtn: "Explore SaaS Demos",
+      secondaryBtn: "Explore Demos",
     },
   },
 };

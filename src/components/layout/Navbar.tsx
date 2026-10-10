@@ -12,14 +12,10 @@ export default function Navbar() {
   const [activeTab, setActiveTab] = useState<string>("home");
   const [isMobileOpen, setIsMobileOpen] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
-  // El hero es un video oscuro en ambos temas: mientras el navbar esté encima, usa la versión oscura
-  const [overHero, setOverHero] = useState<boolean>(true);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
-      const hero = document.querySelector("[data-hero]");
-      setOverHero(hero ? hero.getBoundingClientRect().bottom > 72 : false);
     };
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -29,11 +25,11 @@ export default function Navbar() {
   return (
     <>
       {/* Floating Executive Navbar */}
-      <header className={`${overHero ? "theme-dark" : ""} fixed top-3 sm:top-4 left-0 right-0 z-50 flex items-center justify-center px-4 sm:px-6 w-full pointer-events-none`}>
+      <header className="fixed top-3 sm:top-4 left-0 right-0 z-50 flex items-center justify-center px-4 sm:px-6 w-full pointer-events-none">
         <div
           className={`flex items-center justify-between w-full max-w-6xl pointer-events-auto transition-all duration-300 py-2 px-3 sm:px-4 rounded-full border ${
             scrolled
-              ? "bg-black/35 border-white/10 backdrop-blur-md"
+              ? "bg-black/75 border-white/10 backdrop-blur-md shadow-sm"
               : "bg-transparent border-transparent"
           }`}
         >
@@ -84,7 +80,7 @@ export default function Navbar() {
               <Globe className="w-3.5 h-3.5 text-blue-400 shrink-0" />
               <span
                 className={`px-1 rounded text-[10px] font-bold ${
-                  language === "es" ? "bg-blue-600 text-white" : "text-zinc-400"
+                  language === "es" ? "bg-blue-600 text-[#ffffff]" : "text-zinc-400"
                 }`}
               >
                 ES
@@ -92,7 +88,7 @@ export default function Navbar() {
               <span className="text-zinc-600">/</span>
               <span
                 className={`px-1 rounded text-[10px] font-bold ${
-                  language === "en" ? "bg-blue-600 text-white" : "text-zinc-400"
+                  language === "en" ? "bg-blue-600 text-[#ffffff]" : "text-zinc-400"
                 }`}
               >
                 EN

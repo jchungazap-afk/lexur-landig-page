@@ -19,7 +19,7 @@ export default function HeroPartnersTicker() {
           return (
             <span
               key={`${partner.id}-ticker-${idx}`}
-              className="inline-flex items-center gap-2 text-xs font-mono tracking-wider text-gray-300 uppercase select-none hover:text-white transition-all py-1.5 px-3 rounded-full bg-white/[0.04] border border-white/10 hover:border-white/25 hover:bg-white/[0.08]"
+              className="inline-flex items-center gap-2 text-xs font-mono tracking-wider text-zinc-400 uppercase select-none hover:text-white transition-all py-1.5 px-3 rounded-full bg-white/[0.04] border border-white/10 hover:border-white/25 hover:bg-white/[0.08]"
             >
               {IconComponent ? (
                 <IconComponent className="w-4 h-4 shrink-0" />

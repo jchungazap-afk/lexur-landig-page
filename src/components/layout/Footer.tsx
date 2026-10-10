@@ -8,12 +8,12 @@ import BrandLogo from "../common/BrandLogo";
 
 const T = {
   es: {
-    about: "Software empresarial para empresas peruanas: sistemas SaaS listos para operar y desarrollo a medida sobre la misma base.",
+    about: "Software empresarial para empresas peruanas: sistemas empresariales listos para operar y desarrollo a medida sobre la misma base.",
     products: "Productos",
     company: "Empresa",
     contact: "Contacto",
     links: [
-      { label: "Sistemas SaaS", href: "#saas" },
+      { label: "Sistemas empresariales", href: "#saas" },
       { label: "Desarrollo a medida", href: "#contact" },
       { label: "Solicitar una demo", href: "#contact" },
     ],
@@ -22,12 +22,12 @@ const T = {
     top: "Volver arriba",
   },
   en: {
-    about: "Business software for Peruvian companies: SaaS systems ready to run, and custom development on the same foundation.",
+    about: "Business software for Peruvian companies: business systems ready to run, and custom development on the same foundation.",
     products: "Products",
     company: "Company",
     contact: "Contact",
     links: [
-      { label: "SaaS systems", href: "#saas" },
+      { label: "Business systems", href: "#saas" },
       { label: "Custom development", href: "#contact" },
       { label: "Request a demo", href: "#contact" },
     ],

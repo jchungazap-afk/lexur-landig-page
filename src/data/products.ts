@@ -4,7 +4,7 @@ export const SAAS_PRODUCTS: SaaSProduct[] = [
   {
     id: "ferrecore",
     name: "FerreCore Cloud POS",
-    badge: "SaaS Retail & Ferreterías",
+    badge: "Retail & Ferreterías",
     tagline: {
       es: "Punto de Venta, Control de Inventario Multialmacén y Facturación en Milisegundos",
       en: "Point of Sale, Multi-Warehouse Inventory & Electronic Invoicing in Milliseconds",
@@ -29,7 +29,7 @@ export const SAAS_PRODUCTS: SaaSProduct[] = [
   {
     id: "medclinic",
     name: "MedClinic EHR",
-    badge: "SaaS Salud & Clínicas",
+    badge: "Salud & Clínicas",
     tagline: {
       es: "Expediente Clínico Electrónico, Teleconsulta y Gestión Hospitalaria Integral",
       en: "Electronic Health Records, Telehealth & Comprehensive Clinic Management",
@@ -54,7 +54,7 @@ export const SAAS_PRODUCTS: SaaSProduct[] = [
   {
     id: "optivision",
     name: "OptiVision Cloud",
-    badge: "SaaS Ópticas & Centros Visuales",
+    badge: "Ópticas & Centros Visuales",
     tagline: {
       es: "Gestión Óptica Integral: Recetas Oftalmológicas, Taller de Lunas y Facturación",
       en: "Comprehensive Optical Management: Prescription Tracking, Lens Lab & Billing",
