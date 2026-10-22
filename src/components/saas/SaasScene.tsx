@@ -73,7 +73,7 @@ export function PinnedScene({ scene, index, total, language, active, load, onZoo
         <div
           data-glow
           aria-hidden
-          className="absolute w-[70vw] h-[45vh] rounded-full blur-[90px] opacity-0"
+          className="absolute w-[70vw] h-[45vh] rounded-full blur-[32px] lg:blur-[90px] opacity-0"
           style={{ background: scene.gradient.glow }}
         />
         <div

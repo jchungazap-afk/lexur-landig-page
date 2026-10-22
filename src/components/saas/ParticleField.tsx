@@ -62,6 +62,7 @@ export default function ParticleField({ state, colors }: Props) {
     let running = false;
     let lastU = state.current?.u ?? 0;
     let vel = 0; // velocidad de scroll suavizada (pantallas / frame)
+    let isMobile = false;
     const mouse = { x: -9999, y: -9999, on: false };
 
     const seed = () => {
@@ -72,7 +73,8 @@ export default function ParticleField({ state, colors }: Props) {
       canvas.width = w;
       canvas.height = h;
       const area = rect.width * rect.height;
-      const count = Math.round(Math.min(rect.width < 768 ? 80 : 170, area / 8000));
+      isMobile = rect.width < 768;
+      const count = isMobile ? 24 : Math.round(Math.min(170, area / 8000));
       parts = Array.from({ length: count }, () => {
         const z = 0.25 + Math.random() * 0.75;
         return {
@@ -148,6 +150,7 @@ export default function ParticleField({ state, colors }: Props) {
       };
 
       // red: solo la capa cercana para no saturar
+      if (!isMobile) {
       ctx.lineWidth = 0.6 * dpr;
       for (let i = 0; i < parts.length; i++) {
         const a = parts[i];
@@ -171,6 +174,7 @@ export default function ParticleField({ state, colors }: Props) {
       }
 
       // puntos + estelas
+      }
       const streak = Math.min(Math.abs(scrollPx) * 6, 90 * dpr);
       for (const p of parts) {
         const x = p.x + p.dx;

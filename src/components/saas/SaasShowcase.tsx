@@ -53,13 +53,19 @@ interface Geo {
   splitScale: number;
 }
 
-const LENGTHS = SAAS_SCENES.map((s) => s.scrollLength ?? DEFAULT_SCROLL_LENGTH);
-const PRO = PRO_TL.length;
-// Progreso global en "pantallas": [presentación][escena 1][escena 2]...
-const TOTAL = PRO + LENGTHS.reduce((a, b) => a + b, 0);
+const LENGTHS_DESKTOP = SAAS_SCENES.map((s) => s.scrollLength ?? DEFAULT_SCROLL_LENGTH);
+const PRO_DESKTOP = PRO_TL.length;
+const TOTAL_DESKTOP = PRO_DESKTOP + LENGTHS_DESKTOP.reduce((a, b) => a + b, 0);
+
+const LENGTHS_MOBILE = SAAS_SCENES.map(() => 1.7);
+const PRO_MOBILE = 1.0;
+const TOTAL_MOBILE = PRO_MOBILE + LENGTHS_MOBILE.reduce((a, b) => a + b, 0);
+
+
+
 // Partículas en los colores de marca (azul y cian Lexur), iguales en todas las escenas
 const ACCENTS = ["#F1EFEA", "#A8A59E", "#D6D3CD", "#8A8780"];
-const STARTS = LENGTHS.map((_, i) => PRO + LENGTHS.slice(0, i).reduce((a, b) => a + b, 0));
+
 
 export default function SaasShowcase() {
   const { language } = useLanguage();
@@ -211,12 +217,21 @@ function PinnedStory({
     let target = 0;
     let raf = 0;
     let activeIdx = 0;
+    let lengths: number[] = LENGTHS_DESKTOP;
+    let proLength: number = PRO_DESKTOP;
+    let total: number = TOTAL_DESKTOP;
+    let starts: number[] = lengths.map((_, i) => proLength + lengths.slice(0, i).reduce((a, b) => a + b, 0));
 
     /* ---------- MEDIR: equivalente a ScrollTrigger.refresh() ---------- */
     const measure = () => {
       vw = stage.clientWidth;
       vh = stage.clientHeight;
       desktop = vw >= DESKTOP_MIN_WIDTH;
+      lengths = desktop ? LENGTHS_DESKTOP : LENGTHS_MOBILE;
+      proLength = desktop ? PRO_DESKTOP : PRO_MOBILE;
+      total = desktop ? TOTAL_DESKTOP : TOTAL_MOBILE;
+      starts = lengths.map((_, i) => proLength + lengths.slice(0, i).reduce((a, b) => a + b, 0));
+      track.style.height = `calc(${total * 100}svh + 100svh)`;
       scrollable = Math.max(1, track.offsetHeight - vh);
 
       geo = nodes.map((n, i) => {
@@ -262,21 +277,25 @@ function PinnedStory({
 
     /* ---------- RENDER: solo transform + opacity ---------- */
     const render = (pos: number, force = false) => {
-      const u = (pos / scrollable) * TOTAL; // progreso global en "escenas"
+      const u = (pos / scrollable) * total; // progreso global en "escenas"
       const last = nodes.length - 1;
 
       // Fondo: cada capa i hace crossfade sobre la anterior alrededor de su inicio
       bgRefs.current.forEach((bg, i) => {
-        const prevSpan = i === 0 ? PRO * (1 - PRO_TL.out[0]) : LENGTHS[i - 1] * (1 - TL.exit[0]);
-        const a = ramp(u, [STARTS[i] - prevSpan, STARTS[i] + LENGTHS[i] * TL.enter[1]]);
+        const prevSpan = i === 0 ? proLength * (1 - PRO_TL.out[0]) : lengths[i - 1] * (1 - TL.exit[0]);
+        const a = ramp(u, [starts[i] - prevSpan, starts[i] + lengths[i] * TL.enter[1]]);
         bg.style.opacity = String(a);
         // leve parallax del fondo
-        bg.style.transform = `translate3d(0, ${(1 - a) * 4}vh, 0)`;
+        if (desktop) {
+          bg.style.transform = `translate3d(0, ${(1 - a) * 4}vh, 0)`;
+        } else {
+          bg.style.transform = "none";
+        }
       });
 
       // PRESENTACIÓN: píldoras en stagger → título hace zoom y se desvanece
       if (pro) {
-        const tp = u / PRO;
+        const tp = u / proLength;
         const outP = easeInOut(ramp(tp, PRO_TL.out));
         pro.head.style.opacity = String(1 - outP);
         pro.head.style.transform = `translate3d(0, ${-outP * 40}px, 0) scale(${1 + outP * 0.12})`;
@@ -289,20 +308,20 @@ function PinnedStory({
         pro.hint.style.opacity = String(1 - ramp(tp, [0, 0.12]));
         pro.root.style.visibility = outP >= 1 ? "hidden" : "";
         pro.root.inert = outP > 0.6;
-        if (rail) rail.style.opacity = String(ramp(u, [PRO * 0.75, PRO + 0.2]));
+        if (rail) rail.style.opacity = String(ramp(u, [proLength * 0.75, proLength + 0.2]));
       }
 
       let nextActive = 0;
-      for (let i = 0; i < STARTS.length; i++) if (u >= STARTS[i] - LENGTHS[Math.max(0, i - 1)] * (1 - TL.exit[0])) nextActive = i;
+      for (let i = 0; i < starts.length; i++) if (u >= starts[i] - lengths[Math.max(0, i - 1)] * (1 - TL.exit[0])) nextActive = i;
       // Partículas: multicolor en la presentación → color del SaaS activo
       fieldRef.current.u = u;
-      fieldRef.current.mix = 1 - ramp(u, [PRO * 0.55, PRO + 0.15]);
+      fieldRef.current.mix = 1 - ramp(u, [proLength * 0.55, proLength + 0.15]);
       fieldRef.current.active = nextActive;
       nextActive = 0;
       nodes.forEach((n, i) => {
-        const t = (u - STARTS[i]) / LENGTHS[i]; // progreso local de la escena
+        const t = (u - starts[i]) / lengths[i]; // progreso local de la escena
         barRefs.current[i]?.style.setProperty("transform", `scaleX(${clamp(t)})`);
-        if (u >= STARTS[i]) nextActive = i;
+        if (u >= starts[i]) nextActive = i;
 
         const enterA = ramp(t, TL.enter);
         const exitP = i === last ? 0 : easeInOut(ramp(t, TL.exit));
@@ -360,7 +379,8 @@ function PinnedStory({
 
     /* ---------- SCRUB con inercia (rAF solo mientras hay movimiento) ---------- */
     const tick = () => {
-      current = current < 0 ? target : current + (target - current) * SCRUB_SMOOTHING;
+      const smoothing = desktop ? SCRUB_SMOOTHING : 0.52;
+      current = current < 0 ? target : current + (target - current) * smoothing;
       if (Math.abs(target - current) < 0.5) current = target;
       render(current);
       raf = current !== target ? requestAnimationFrame(tick) : 0;
@@ -418,12 +438,17 @@ function PinnedStory({
     if (!track || !stage) return;
     const scrollable = track.offsetHeight - stage.clientHeight;
     const top = track.getBoundingClientRect().top + window.scrollY;
-    const u = STARTS[i] + LENGTHS[i] * TL.enter[1];
-    window.scrollTo({ top: top + (u / TOTAL) * scrollable + 1 });
+    const isDesktop = stage.clientWidth >= DESKTOP_MIN_WIDTH;
+    const sceneLengths = isDesktop ? LENGTHS_DESKTOP : LENGTHS_MOBILE;
+    const proLen = isDesktop ? PRO_DESKTOP : PRO_MOBILE;
+    const totalLen = isDesktop ? TOTAL_DESKTOP : TOTAL_MOBILE;
+    const startPositions = sceneLengths.map((_, idx) => proLen + sceneLengths.slice(0, idx).reduce((a, b) => a + b, 0));
+    const u = startPositions[i] + sceneLengths[i] * TL.enter[1];
+    window.scrollTo({ top: top + (u / totalLen) * scrollable + 1 });
   };
 
   return (
-    <div ref={trackRef} className="relative" style={{ height: `calc(${TOTAL * 100}svh + 100svh)` }}>
+    <div ref={trackRef} className="relative" style={{ height: `calc(${TOTAL_DESKTOP * 100}svh + 100svh)` }}>
       <div ref={stageRef} className="sticky top-0 h-[100svh] w-full overflow-hidden">
         {/* Fondos con degradado: crossfade entre escenas */}
         {SAAS_SCENES.map((s, i) => (
