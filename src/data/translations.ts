@@ -1,8 +1,11 @@
 import { NavLink, StatItemData } from "../types";
 
 export const NAV_LINKS: NavLink[] = [
-  { key: "home", href: "#", label: { es: "Inicio", en: "Home" } },
+  { key: "home", href: "#home", label: { es: "Inicio", en: "Home" } },
+  { key: "features", href: "#features", label: { es: "Capacidades", en: "Capabilities" } },
   { key: "saas", href: "#saas", label: { es: "Sistemas Empresariales", en: "Business Systems" } },
+  { key: "cases", href: "#case-studies", label: { es: "Casos de Éxito", en: "Case Studies" } },
+  { key: "faq", href: "#faq", label: { es: "FAQ", en: "FAQ" } },
   { key: "contact", href: "#contact", label: { es: "Contacto", en: "Contact" } },
 ];
 

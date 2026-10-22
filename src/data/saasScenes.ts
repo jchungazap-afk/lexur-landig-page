@@ -103,7 +103,7 @@ export const SAAS_SCENES: SaasScene[] = [
       en: "Fast point of sale, multi-warehouse inventory with minimum-stock alerts, supplier management and quotes that turn into sales in one click. Works even offline.",
     },
     side: "left",
-    gradient: { colors: ["#081634", "#060f26", "#050d20"], angle: 160, glow: "rgba(47,107,234,0.30)" },
+    gradient: { colors: ["#181817", "#141413", "#111110"], angle: 160, glow: "rgba(241,239,234,0.12)" },
     accent: "#f5a524",
     image: {
       src: "/assets/ferrecore_pos_system.jpg",
@@ -160,7 +160,7 @@ export const SAAS_SCENES: SaasScene[] = [
       en: "Smart scheduling with WhatsApp reminders, encrypted medical records, digital triage with ICD-10 and doctor fee settlement.",
     },
     side: "right",
-    gradient: { colors: ["#081634", "#060f26", "#050d20"], angle: 200, glow: "rgba(22,198,204,0.22)" },
+    gradient: { colors: ["#181817", "#141413", "#111110"], angle: 200, glow: "rgba(241,239,234,0.12)" },
     accent: "#1fbf86",
     image: {
       src: "/assets/medclinic_ehr_system.jpg",
@@ -212,7 +212,7 @@ export const SAAS_SCENES: SaasScene[] = [
       en: "Parametric optometric charts (sphere, cylinder, axis, add), lab order tracking and frame & lens inventory across every branch.",
     },
     side: "left",
-    gradient: { colors: ["#081634", "#060f26", "#050d20"], angle: 150, glow: "rgba(47,107,234,0.30)" },
+    gradient: { colors: ["#181817", "#141413", "#111110"], angle: 150, glow: "rgba(241,239,234,0.12)" },
     accent: "#8b6cff",
     image: {
       src: "/assets/optivision_eye_system.jpg",
@@ -264,7 +264,7 @@ export const SAAS_SCENES: SaasScene[] = [
       en: "High-concurrency microservices, multi-region replication, live telemetry and anti-DDoS protection. Continuous deploys with zero downtime.",
     },
     side: "right",
-    gradient: { colors: ["#081634", "#060f26", "#050d20"], angle: 210, glow: "rgba(22,198,204,0.24)" },
+    gradient: { colors: ["#181817", "#141413", "#111110"], angle: 210, glow: "rgba(241,239,234,0.12)" },
     accent: "#16c6cc",
     image: {
       src: "/assets/lexur_cloud_system.jpg",

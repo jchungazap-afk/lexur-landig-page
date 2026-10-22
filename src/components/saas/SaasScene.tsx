@@ -20,10 +20,10 @@ interface SceneProps {
 export function sceneBgVars(scene: Scene): React.CSSProperties {
   const [a, b, c] = scene.gradient.colors;
   const { angle, glow } = scene.gradient;
-  const light = "#f6f7f9";
+  const light = "#EBE9E5";
   return {
     ["--g-dark" as string]: `radial-gradient(60% 50% at 50% 55%, ${glow.replace(/[\d.]+\)$/, "0.24)")}, transparent 70%), linear-gradient(${angle}deg, ${a}, ${b} 55%, ${c})`,
-    ["--g-light" as string]: `radial-gradient(60% 50% at 50% 55%, color-mix(in oklab, #2f6bea 16%, transparent), transparent 70%), linear-gradient(${angle}deg, color-mix(in oklab, #2f6bea 10%, ${light}), ${light} 55%, color-mix(in oklab, #16c6cc 6%, ${light}))`,
+    ["--g-light" as string]: `radial-gradient(60% 50% at 50% 55%, rgba(21,21,20,0.06), transparent 70%), linear-gradient(${angle}deg, #E3E0DB, ${light} 55%, #F2F0EC)`,
   } as React.CSSProperties;
 }
 

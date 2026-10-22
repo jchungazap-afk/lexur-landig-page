@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    "convert.js",
+    "convert_qa.js",
+    "graphify-out/**",
   ]),
 ]);
 

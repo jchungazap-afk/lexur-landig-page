@@ -3,6 +3,19 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useLanguage } from "../../context/LanguageContext";
 import { STATS_DATA } from "../../data/translations";
+import {
+  IconStack2,
+  IconBlocks,
+  IconActivityHeartbeat,
+  IconHeadset,
+} from "@tabler/icons-react";
+
+const STAT_ICONS = [
+  IconStack2,
+  IconBlocks,
+  IconActivityHeartbeat,
+  IconHeadset,
+];
 
 function easeOutCubic(t: number): number {
   return 1 - Math.pow(1 - t, 3);
@@ -57,24 +70,25 @@ export default function StatsFooter() {
   return (
     <footer
       ref={containerRef}
-      className="grid grid-cols-2 md:grid-cols-4 w-full max-w-[920px] gap-4 sm:gap-8 shrink-0 z-10 px-4"
+      className="grid grid-cols-2 md:grid-cols-4 w-full max-w-[960px] gap-4 sm:gap-6 shrink-0 z-10 px-4"
       aria-label="Métricas de Desempeño y Rendimiento"
     >
       {STATS_DATA.map((stat, idx) => {
-        const animDelay = `${0.5 + idx * 0.08}s`;
+        const animDelay = `${0.3 + idx * 0.08}s`;
+        const IconComp = STAT_ICONS[idx % STAT_ICONS.length];
         return (
           <div
             key={idx}
-            className="flex flex-col items-center text-center anim-item"
+            className="flex flex-col items-center text-center p-4 rounded-2xl border border-white/10 bg-white/[0.02] anim-item"
             style={{ animationDelay: animDelay }}
           >
-            <span className="font-display text-white text-[22px] sm:text-[30px] leading-none mb-1.5">
-              {stat.icon}
+            <span className="grid size-9 place-items-center rounded-xl border border-white/10 bg-white/[0.04] text-zinc-300 mb-2.5">
+              <IconComp className="size-4" stroke={1.75} />
             </span>
-            <span className="text-white text-[20px] sm:text-[26px] font-semibold tracking-tight tabular-nums leading-tight">
+            <span className="font-heading text-white text-[22px] sm:text-[28px] font-semibold tracking-tight tabular-nums leading-tight">
               {formatDisplay(counts[idx], stat.decimals, stat.suffix)}
             </span>
-            <span className="text-zinc-500 text-[11px] sm:text-[12.5px] font-medium mt-1">
+            <span className="text-zinc-400 text-[11.5px] sm:text-[12.5px] font-medium mt-1">
               {stat.label[language]}
             </span>
           </div>
