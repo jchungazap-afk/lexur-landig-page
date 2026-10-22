@@ -19,17 +19,14 @@ export default function SpecsPanel({ scene, language }: { scene: SaasScene; lang
   return (
     <div className="saas-panel relative flex flex-col gap-4 lg:gap-7">
       <header data-reveal className="flex items-end gap-4">
-        <span
-          className="grid place-items-center w-11 h-11 lg:w-12 lg:h-12 rounded-2xl shrink-0"
-          style={{ background: `color-mix(in oklab, ${scene.accent} 16%, transparent)`, color: scene.accent }}
-        >
-          <Icon className="w-5 h-5 lg:w-[22px] lg:h-[22px]" aria-hidden />
+        <span className="grid place-items-center w-11 h-11 lg:w-12 lg:h-12 rounded-2xl shrink-0 bg-white/[0.06] border border-white/12 text-white shadow-inner">
+          <Icon className="w-5 h-5 lg:w-[22px] lg:h-[22px]" strokeWidth={1.5} aria-hidden />
         </span>
         <div className="min-w-0">
           <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-white/[0.08] border border-white/12 text-[11px] font-mono tracking-wider uppercase text-zinc-300 mb-1.5 backdrop-blur-sm">
             <span className="relative flex h-1.5 w-1.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: scene.accent }} />
-              <span className="relative inline-flex rounded-full h-1.5 w-1.5" style={{ background: scene.accent }} />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-zinc-400 opacity-60" />
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-white" />
             </span>
             {scene.sector[language]}
           </div>

@@ -49,9 +49,9 @@ export function PinnedScene({ scene, index, total, language, active, load, onZoo
       <div data-intro className="absolute inset-0 flex items-center justify-center px-6 text-center">
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-black/[0.04] dark:bg-white/[0.06] border border-black/10 dark:border-white/12 shadow-xs mb-6 backdrop-blur-md">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: scene.accent }} />
-              <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: scene.accent }} />
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-zinc-400 dark:bg-zinc-300 opacity-60" />
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-zinc-800 dark:bg-zinc-200" />
             </span>
             <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400">
               {scene.sector[language]}
@@ -130,9 +130,9 @@ export function StaticScene({
     >
       <header className="max-w-3xl mx-auto text-center mb-10 lg:mb-14">
         <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-black/[0.04] dark:bg-white/[0.06] border border-black/10 dark:border-white/12 shadow-xs mb-6 backdrop-blur-md">
-        <span className="relative flex h-2 w-2">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: scene.accent }} />
-          <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: scene.accent }} />
+        <span className="relative flex h-1.5 w-1.5">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-zinc-400 dark:bg-zinc-300 opacity-60" />
+          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-zinc-800 dark:bg-zinc-200" />
         </span>
         <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400">
           {scene.sector[language]}

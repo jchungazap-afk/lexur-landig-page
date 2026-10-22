@@ -495,7 +495,7 @@ function PinnedStory({
                 {copy.subtitle}
               </p>
             </div>
-            <div className="mt-10 sm:mt-12 grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5 max-w-4xl mx-auto">
+            <div className="mt-10 sm:mt-12 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto">
               {SAAS_SCENES.map((s, i) => {
                 const Icon = s.icon;
                 const metric = s.metrics[0];
@@ -504,38 +504,26 @@ function PinnedStory({
                     <button
                       type="button"
                       onClick={() => goTo(i)}
-                      className="group relative w-full text-left p-3.5 sm:p-4 rounded-2xl border border-black/10 dark:border-white/12 bg-black/[0.02] dark:bg-white/[0.03] hover:bg-black/[0.05] dark:hover:bg-white/[0.07] hover:border-black/25 dark:hover:border-white/25 transition-all duration-300 shadow-[0_2px_12px_rgba(0,0,0,0.03)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-white"
+                      className="group relative w-full text-left p-4 rounded-2xl border border-black/10 dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.03] hover:bg-black/[0.05] dark:hover:bg-white/[0.06] hover:border-black/25 dark:hover:border-white/25 transition-all duration-300 shadow-xs hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-white"
                     >
-                      {/* Top Bar: LED + Category Pill */}
-                      <div className="flex items-center justify-between gap-2 mb-3">
-                        <span className="inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] font-mono tracking-wider uppercase text-zinc-500 dark:text-zinc-400">
-                          <span className="relative flex h-2 w-2">
-                            <span
-                              className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
-                              style={{ background: s.accent }}
-                            />
-                            <span
-                              className="relative inline-flex rounded-full h-2 w-2"
-                              style={{ background: s.accent }}
-                            />
+                      {/* Top Bar: Minimalist Titanium Status Dot + Category Pill */}
+                      <div className="flex items-center justify-between gap-2 mb-3.5">
+                        <span className="inline-flex items-center gap-2 text-[11px] font-mono tracking-wider text-zinc-500 dark:text-zinc-400">
+                          <span className="relative flex h-1.5 w-1.5">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-zinc-400 dark:bg-zinc-300 opacity-60" />
+                            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-zinc-800 dark:bg-zinc-200" />
                           </span>
                           <span>{String(i + 1).padStart(2, "0")}</span>
                         </span>
-                        <span className="text-[10px] font-mono font-medium px-2 py-0.5 rounded-full bg-black/[0.04] dark:bg-white/[0.06] border border-black/5 dark:border-white/10 text-zinc-600 dark:text-zinc-400 truncate max-w-[110px]">
+                        <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-md bg-black/[0.04] dark:bg-white/[0.05] border border-black/5 dark:border-white/10 text-zinc-600 dark:text-zinc-400 truncate max-w-[110px]">
                           {s.sector[language].split("&")[0].trim()}
                         </span>
                       </div>
 
-                      {/* Middle: Icon + Name */}
-                      <div className="flex items-center gap-2.5 mb-2">
-                        <span
-                          className="grid place-items-center w-8 h-8 rounded-xl shrink-0 transition-transform duration-200 group-hover:scale-110"
-                          style={{
-                            background: "color-mix(in oklab, " + s.accent + " 18%, transparent)",
-                            color: s.accent,
-                          }}
-                        >
-                          <Icon className="w-4 h-4" aria-hidden />
+                      {/* Middle: Titanium Solid Container + Lucide Icon + Name */}
+                      <div className="flex items-center gap-3 mb-3">
+                        <span className="grid place-items-center w-8 h-8 rounded-xl shrink-0 bg-black/[0.05] dark:bg-white/[0.07] border border-black/10 dark:border-white/12 text-zinc-800 dark:text-zinc-200 transition-colors duration-200 group-hover:text-black dark:group-hover:text-white group-hover:border-black/25 dark:group-hover:border-white/30">
+                          <Icon className="w-4 h-4" strokeWidth={1.5} aria-hidden />
                         </span>
                         <p className="font-heading text-[15px] sm:text-[16px] font-semibold text-zinc-900 dark:text-white tracking-tight leading-tight truncate">
                           {s.name}
@@ -543,11 +531,11 @@ function PinnedStory({
                       </div>
 
                       {/* Bottom Metric & Arrow */}
-                      <div className="flex items-center justify-between text-[11px] text-zinc-500 dark:text-zinc-400 pt-2 border-t border-black/5 dark:border-white/5">
-                        <span className="font-mono text-zinc-600 dark:text-zinc-400">
+                      <div className="flex items-center justify-between text-[11px] text-zinc-500 dark:text-zinc-400 pt-2.5 border-t border-black/5 dark:border-white/5">
+                        <span className="font-mono text-zinc-600 dark:text-zinc-400 font-medium">
                           {metric.value} · {metric.label[language]}
                         </span>
-                        <ArrowRight className="w-3.5 h-3.5 opacity-40 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-zinc-900 dark:text-white shrink-0" />
+                        <ArrowRight className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-white -translate-x-1 group-hover:translate-x-0 transition-all duration-200 shrink-0" />
                       </div>
                     </button>
                   </div>

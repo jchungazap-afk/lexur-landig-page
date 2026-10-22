@@ -1,9 +1,6 @@
 import type { ComponentType } from "react";
+import { Boxes, Activity, Scan, Cpu } from "lucide-react";
 import {
-  ToolboxDuo,
-  StethoscopeDuo,
-  EyeglassesDuo,
-  HardDrivesDuo,
   ShieldCheckDuo,
   LightningDuo,
 } from "../components/common/Icons";
@@ -31,7 +28,7 @@ type Localized = { es: string; en: string };
 
 export interface SaasStackItem {
   name: string;
-  icon: ComponentType<{ className?: string }>;
+  icon: ComponentType<{ className?: string; strokeWidth?: number; "aria-hidden"?: boolean }>;
 }
 
 export interface SaasLink {
@@ -54,7 +51,7 @@ export interface SaasGradient {
 export interface SaasScene {
   id: string;
   name: string;
-  icon: ComponentType<{ className?: string }>;
+  icon: ComponentType<{ className?: string; strokeWidth?: number; "aria-hidden"?: boolean }>;
   /** Sector / categoría corta (overline) */
   sector: Localized;
   /** Qué es, en una frase */
@@ -88,7 +85,7 @@ export const SAAS_SCENES: SaasScene[] = [
   {
     id: "ferrecore",
     name: "FerreCore",
-    icon: ToolboxDuo,
+    icon: Boxes,
     sector: { es: "Ferreterías & Retail técnico", en: "Hardware stores & technical retail" },
     tagline: {
       es: "El sistema de gestión que tu ferretería necesita: vende, controla stock y cotiza desde un solo lugar.",
@@ -145,7 +142,7 @@ export const SAAS_SCENES: SaasScene[] = [
   {
     id: "medclinic",
     name: "MedClinic EHR",
-    icon: StethoscopeDuo,
+    icon: Activity,
     sector: { es: "Salud & Clínicas", en: "Healthcare & Clinics" },
     tagline: {
       es: "Historia clínica electrónica, agenda y recetas en una plataforma segura.",
@@ -197,7 +194,7 @@ export const SAAS_SCENES: SaasScene[] = [
   {
     id: "optivision",
     name: "OptiVision Cloud",
-    icon: EyeglassesDuo,
+    icon: Scan,
     sector: { es: "Ópticas & Centros visuales", en: "Optical stores & eye-care" },
     tagline: {
       es: "Gestión óptica integral: fórmulas, taller de lunas y venta.",
@@ -249,7 +246,7 @@ export const SAAS_SCENES: SaasScene[] = [
   {
     id: "lexurcloud",
     name: "Lexur Cloud Core",
-    icon: HardDrivesDuo,
+    icon: Cpu,
     sector: { es: "Infraestructura a medida", en: "Custom infrastructure" },
     tagline: {
       es: "El motor cloud sobre el que corren todos nuestros sistemas.",
