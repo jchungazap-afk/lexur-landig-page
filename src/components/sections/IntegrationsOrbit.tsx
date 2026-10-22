@@ -10,10 +10,10 @@ import {
   StripeIcon,
   PostgresIcon,
   DockerIcon,
-  KubernetesIcon,
-  CloudflareIcon,
-  SupabaseIcon,
-  RedisIcon,
+
+
+
+
 } from "../common/BrandIcons";
 
 export default function IntegrationsOrbit() {

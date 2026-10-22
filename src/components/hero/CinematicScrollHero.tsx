@@ -3,13 +3,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { useLanguage } from "../../context/LanguageContext";
-import { TRANSLATIONS } from "../../data/translations";
+
 import { SAAS_PRODUCTS } from "../../data/products";
-import { ArrowUpRight, Lock, Activity, Sparkles, ChevronRight } from "lucide-react";
+import { ArrowUpRight, Lock, Activity, ChevronRight } from "lucide-react";
 
 export default function CinematicScrollHero() {
   const { language } = useLanguage();
-  const t = TRANSLATIONS[language];
+
   const containerRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState<number>(0);
   const [activePreviewIndex, setActivePreviewIndex] = useState<number>(0);

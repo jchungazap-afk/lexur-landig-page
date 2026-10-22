@@ -6,7 +6,7 @@ import { useLanguage } from "../../context/LanguageContext";
 import { TRANSLATIONS } from "../../data/translations";
 import { SAAS_PRODUCTS } from "../../data/products";
 import {
-  BRAND_ICON_MAP,
+
   NextJsIcon,
   PostgresIcon,
   TimescaleIcon,
