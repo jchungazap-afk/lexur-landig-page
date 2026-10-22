@@ -82,7 +82,7 @@ export default function SaasShowcase() {
   }, [zoom]);
 
   return (
-    <section id="saas" aria-labelledby="saas-heading" className="relative z-20 bg-[#111110] scroll-mt-20">
+    <section id="saas" aria-labelledby="saas-heading" className="relative z-20 bg-[var(--bg)] text-[var(--text)] scroll-mt-20">
       <a
         href="#saas-end"
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:text-black"
@@ -449,7 +449,7 @@ function PinnedStory({
 
   return (
     <div ref={trackRef} className="relative" style={{ height: `calc(${TOTAL_DESKTOP * 100}svh + 100svh)` }}>
-      <div ref={stageRef} className="sticky top-0 h-[100svh] w-full overflow-hidden">
+      <div ref={stageRef} className="sticky top-0 h-[100svh] w-full overflow-hidden bg-[var(--bg)] transition-colors">
         {/* Fondos con degradado: crossfade entre escenas */}
         {SAAS_SCENES.map((s, i) => (
           <div
@@ -503,7 +503,7 @@ function PinnedStory({
                     <button
                       type="button"
                       onClick={() => goTo(i)}
-                      className="group inline-flex items-center gap-2.5 rounded-full border border-white/12 bg-white/[0.04] pl-1.5 pr-4 py-1.5 text-[13px] sm:text-sm text-zinc-200 hover:text-white hover:border-white/30 hover:bg-white/[0.08] transition-colors focus-visible:outline-2 focus-visible:outline-white"
+                      className="group inline-flex items-center gap-2.5 rounded-full border border-black/10 dark:border-white/12 bg-black/[0.03] dark:bg-white/[0.04] pl-1.5 pr-4 py-1.5 text-[13px] sm:text-sm text-zinc-700 dark:text-zinc-200 hover:text-black dark:hover:text-white hover:border-black/25 dark:hover:border-white/30 hover:bg-black/[0.06] dark:hover:bg-white/[0.08] transition-colors focus-visible:outline-2 focus-visible:outline-white"
                     >
                       <span className="grid place-items-center w-7 h-7 rounded-full" style={{ background: `${s.accent}22`, color: s.accent }}>
                         <Icon className="w-3.5 h-3.5" aria-hidden />
@@ -544,7 +544,7 @@ function PinnedStory({
           aria-label={language === "es" ? "Sistemas" : "Systems"}
           className="absolute z-10 left-1/2 -translate-x-1/2 top-[92px] lg:top-auto lg:bottom-6 w-[calc(100%-32px)] lg:w-auto"
         >
-          <ol className="flex gap-1.5 lg:gap-2 lg:rounded-full lg:border lg:border-white/10 lg:bg-black/40 lg:backdrop-blur-md lg:p-1.5">
+          <ol className="flex gap-1.5 lg:gap-2 lg:rounded-full lg:border lg:border-black/10 dark:lg:border-white/10 lg:bg-black/5 dark:lg:bg-black/40 lg:backdrop-blur-md lg:p-1.5">
             {SAAS_SCENES.map((s, i) => (
               <li key={s.id} className="flex-1 lg:flex-none">
                 <button
