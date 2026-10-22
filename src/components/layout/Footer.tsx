@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useLanguage } from "../../context/LanguageContext";
 import { SAAS_SCENES } from "../../data/saasScenes";
 import { COMPANY } from "../../data/company";
@@ -15,7 +16,9 @@ const T = {
     links: [
       { label: "Sistemas empresariales", href: "#saas" },
       { label: "Desarrollo a medida", href: "#contact" },
-      { label: "Solicitar una demo", href: "#contact" },
+      { label: "Solicitar una demo", href: "/#contact" },
+      { label: "Política de Privacidad", href: "/privacy" },
+      { label: "Términos de Servicio", href: "/terms" },
     ],
     status: "Todos los sistemas operativos",
     rights: "Todos los derechos reservados.",
@@ -29,7 +32,9 @@ const T = {
     links: [
       { label: "Business systems", href: "#saas" },
       { label: "Custom development", href: "#contact" },
-      { label: "Request a demo", href: "#contact" },
+      { label: "Request a demo", href: "/#contact" },
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms of Service", href: "/terms" },
     ],
     status: "All systems operational",
     rights: "All rights reserved.",
@@ -109,6 +114,17 @@ export default function Footer() {
         <div className="mt-16 flex flex-col-reverse gap-5 sm:flex-row sm:items-center sm:justify-between border-t border-white/10 py-6 text-[13px] text-zinc-500">
           <p>
             © 2026 {COMPANY.legalName} {t.rights}
+          </p>
+          <div className="flex items-center gap-4 text-xs text-zinc-400">
+            <Link href="/privacy" className="hover:text-white transition-colors underline-offset-2 hover:underline">
+              {language === "es" ? "Privacidad y Tratamiento de Datos" : "Privacy & Data"}
+            </Link>
+            <span className="text-zinc-600">•</span>
+            <Link href="/terms" className="hover:text-white transition-colors underline-offset-2 hover:underline">
+              {language === "es" ? "Términos" : "Terms"}
+            </Link>
+          </div>
+          <p className="sr-only">
           </p>
           <div className="flex items-center gap-6">
             <span className="inline-flex items-center gap-2">

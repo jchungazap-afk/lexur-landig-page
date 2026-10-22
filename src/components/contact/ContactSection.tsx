@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useId, useState, type FormEvent } from "react";
 import { useLanguage } from "../../context/LanguageContext";
 import { SAAS_SCENES } from "../../data/saasScenes";
@@ -271,7 +272,12 @@ export default function ContactSection() {
                     {t.sendMail}
                   </button>
                 </div>
-                <p className="mt-5 text-[13px] text-zinc-500">{t.note}</p>
+                <p className="mt-5 text-[13px] text-zinc-500 leading-relaxed">
+                  {t.note}{" "}
+                  <Link href="/privacy" className="text-zinc-400 hover:text-white underline underline-offset-2 transition-colors">
+                    {language === "es" ? "Política de Privacidad y Tratamiento de Datos (Ley N° 29733)" : "Privacy & Data Policy"}
+                  </Link>.
+                </p>
               </form>
             )}
           </div>
