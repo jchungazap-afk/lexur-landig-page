@@ -81,7 +81,7 @@ export default function Hero() {
       {/* Trusted Brands & Production Telemetry Section */}
       <section
         id="trusted-brands"
-        className="relative z-10 py-10 sm:py-14 bg-black"
+        className="relative z-10 py-10 sm:py-14 bg-[var(--bg)]"
       >
         <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-8">
           <p className="text-center text-sm sm:text-base text-zinc-400 max-w-2xl">
