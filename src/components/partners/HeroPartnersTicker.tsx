@@ -72,9 +72,9 @@ export default function HeroPartnersTicker() {
             return (
               <div
                 key={`${item.id}-${index}`}
-                className="shrink-0 flex items-center gap-3 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 group cursor-default"
+                className="shrink-0 flex items-center gap-3.5 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 group cursor-default"
               >
-                <div className="w-5 h-5 sm:w-6 sm:h-6 shrink-0 transition-transform duration-200 group-hover:scale-110">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 shrink-0 transition-transform duration-200 group-hover:scale-110">
                   <Icon className="w-full h-full" />
                 </div>
                 <span className="text-[14px] sm:text-[15px] font-medium tracking-tight text-zinc-300 group-hover:text-white whitespace-nowrap">

@@ -48,10 +48,19 @@ export function PinnedScene({ scene, index, total, language, active, load, onZoo
       {/* 1 · INTRO */}
       <div data-intro className="absolute inset-0 flex items-center justify-center px-6 text-center">
         <div className="max-w-3xl">
-          <p className="mb-4 text-[15px] sm:text-[17px] text-zinc-400">
-            <span className="inline-block w-2 h-2 rounded-[3px] mr-2.5 align-middle" style={{ background: scene.accent }} aria-hidden />
-            {scene.sector[language]}
-          </p>
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-black/[0.04] dark:bg-white/[0.06] border border-black/10 dark:border-white/12 shadow-xs mb-6 backdrop-blur-md">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: scene.accent }} />
+              <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: scene.accent }} />
+            </span>
+            <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400">
+              {scene.sector[language]}
+            </span>
+            <span className="text-zinc-400 dark:text-zinc-600">•</span>
+            <span className="font-mono text-[11px] font-semibold text-zinc-900 dark:text-zinc-200">
+              {scene.metrics[0]?.value}
+            </span>
+          </div>
           <h3
             id={`saas-${scene.id}-title`}
             className="text-[clamp(3.25rem,10vw,9rem)] font-semibold tracking-[-0.05em] text-white leading-[0.88]"
@@ -120,7 +129,19 @@ export function StaticScene({
       style={sceneBgVars(scene)}
     >
       <header className="max-w-3xl mx-auto text-center mb-10 lg:mb-14">
-        <p className="mb-4 text-[15px] text-zinc-400">{scene.sector[language]}</p>
+        <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-black/[0.04] dark:bg-white/[0.06] border border-black/10 dark:border-white/12 shadow-xs mb-6 backdrop-blur-md">
+        <span className="relative flex h-2 w-2">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: scene.accent }} />
+          <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: scene.accent }} />
+        </span>
+        <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400">
+          {scene.sector[language]}
+        </span>
+        <span className="text-zinc-400 dark:text-zinc-600">•</span>
+        <span className="font-mono text-[11px] font-semibold text-zinc-900 dark:text-zinc-200">
+          {scene.metrics[0]?.value}
+        </span>
+      </div>
         <h3 id={`saas-${scene.id}-title`} className="text-4xl lg:text-6xl font-semibold tracking-tight text-white">
           {scene.name}
         </h3>

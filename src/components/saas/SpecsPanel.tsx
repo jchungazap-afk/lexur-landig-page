@@ -26,8 +26,14 @@ export default function SpecsPanel({ scene, language }: { scene: SaasScene; lang
           <Icon className="w-5 h-5 lg:w-[22px] lg:h-[22px]" aria-hidden />
         </span>
         <div className="min-w-0">
-          <p className="text-[13px] lg:text-[15px] text-zinc-400 leading-tight">{scene.sector[language]}</p>
-          <p className="font-heading mt-1 text-[26px] lg:text-[clamp(2rem,2.6vw,2.6rem)] font-semibold tracking-[-0.035em] leading-[1] text-white">
+          <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-white/[0.08] border border-white/12 text-[11px] font-mono tracking-wider uppercase text-zinc-300 mb-1.5 backdrop-blur-sm">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: scene.accent }} />
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5" style={{ background: scene.accent }} />
+            </span>
+            {scene.sector[language]}
+          </div>
+          <p className="font-heading text-[26px] lg:text-[clamp(2rem,2.6vw,2.6rem)] font-semibold tracking-[-0.035em] leading-[1] text-white">
             {scene.name}
           </p>
         </div>
