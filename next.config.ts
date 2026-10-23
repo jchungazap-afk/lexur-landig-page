@@ -2,8 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
-  cacheComponents: true,
-  partialPrefetching: true,
+  // cacheComponents y partialPrefetching desactivados: Cache Components requiere el
+  // runtime de Node.js y cuelga el Worker en Cloudflare (vercel/next.js#94880).
   images: {
     // AVIF primero, WebP como respaldo (srcset retina generado por next/image)
     formats: ["image/avif", "image/webp"],
