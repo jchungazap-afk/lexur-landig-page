@@ -26,7 +26,7 @@ const jetbrains = JetBrains_Mono({
 });
 
 // Se ejecuta antes de pintar: evita el parpadeo al cargar el tema guardado o vía URL (?theme=light/dark)
-const THEME_SCRIPT = `(function(){try{var t=new URLSearchParams(window.location.search).get("theme")||localStorage.getItem("lexur_theme")||"dark";if(t!=="light"&&t!=="dark"){t="dark"}document.documentElement.dataset.theme=t;document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();`;
+const THEME_SCRIPT = `(function(){try{var saved=localStorage.getItem("lexur_theme");var prefersDark=window.matchMedia("(prefers-color-scheme: dark)").matches;var t=new URLSearchParams(window.location.search).get("theme")||saved||(prefersDark?"dark":"light");if(t!=="light"&&t!=="dark"){t="dark"}document.documentElement.dataset.theme=t;document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://lexur.pe"),
@@ -69,7 +69,7 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
       </head>
-      <body className="min-h-full bg-black text-white overflow-x-hidden selection:bg-white selection:text-black">
+      <body className="min-h-full bg-[var(--bg)] text-[var(--text)] overflow-x-hidden selection:bg-white selection:text-black">
         <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>

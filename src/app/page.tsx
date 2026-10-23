@@ -12,7 +12,7 @@ import { SectionDivider } from "@/components/ui/section-divider";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-black text-white flex flex-col selection:bg-blue-500 selection:text-white">
+    <div className="relative min-h-screen bg-[var(--bg)] text-[var(--text)] flex flex-col selection:bg-blue-500 selection:text-white">
       {/* Subtle architectural side-rails inspired by Shadcn Flow Landing Page */}
       <div
         aria-hidden="true"

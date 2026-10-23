@@ -44,7 +44,7 @@ export default function Navbar() {
 
           {/* Desktop Navigation Links */}
           <nav
-            className="hidden md:flex items-center gap-1 bg-white/[0.03] border border-white/10 px-2 py-1 rounded-full shadow-inner"
+            className="hidden md:flex items-center gap-1"
             aria-label="Navegación Principal"
           >
             {NAV_LINKS.map((link) => {

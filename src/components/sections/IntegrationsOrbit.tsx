@@ -199,7 +199,7 @@ export default function IntegrationsOrbit() {
               <div className="relative z-30 flex size-16 sm:size-20 items-center justify-center rounded-full bg-black border border-white/25 shadow-[0_0_40px_rgba(59,130,246,0.4)]">
                 <div className="relative w-10 h-10 sm:w-12 sm:h-12">
                   <Image
-                    src="/assets/logo.webp"
+                    src="/brand/lexur-simbolo.svg"
                     alt="LEXUR Core"
                     fill
                     className="object-contain"
